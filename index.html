@@ -1,1068 +1,676 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CỬA HÀNG AI MỚI NHẤT - Công Hải · Lào Cai</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --primary: #7c6af7;
-      --primary-dark: #6557e0;
-      --secondary: #a855f7;
-      --accent: #f472b6;
-      --gold: #f59e0b;
-      --bg: #080812;
-      --bg2: #0e0e1c;
-      --bg3: #141428;
-      --card: #111122;
-      --card2: #181830;
-      --border: rgba(124, 106, 247, 0.18);
-      --border2: rgba(124, 106, 247, 0.35);
-      --text: #eeeef8;
-      --text2: #9090b8;
-      --text3: #505080;
-      --success: #22d3a5;
-      --warning: #f59e0b;
-      --danger: #ef4444;
-      --zalo: #0068ff;
-      --radius: 16px;
-      --shadow: 0 8px 40px rgba(124, 106, 247, 0.18);
-    }
-    body { font-family: 'Be Vietnam Pro', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
-
-    /* HEADER */
-    header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(24px); background: rgba(8,8,18,0.88); border-bottom: 1px solid var(--border); transition: .3s; }
-    .header-inner { max-width: 1280px; margin: auto; padding: 0 24px; height: 66px; display: flex; align-items: center; gap: 16px; }
-    .logo { font-size: 1.1rem; font-weight: 900; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; white-space: nowrap; letter-spacing: -.5px; }
-    .nav { display: flex; align-items: center; gap: 2px; margin-left: auto; }
-    .nav a { color: var(--text2); font-size: .85rem; font-weight: 600; padding: 8px 14px; border-radius: 8px; text-decoration: none; transition: .2s; }
-    .nav a:hover { color: var(--text); background: rgba(255,255,255,.05); }
-    .zalo-header { display: flex; align-items: center; gap: 8px; background: var(--zalo); border: none; border-radius: 10px; padding: 9px 18px; color: #fff; font-size: .82rem; font-weight: 700; text-decoration: none; cursor: pointer; margin-left: 12px; transition: .2s; font-family: inherit; }
-    .zalo-header:hover { opacity: .88; transform: translateY(-1px); }
-
-    /* HERO */
-    .hero { padding: 148px 24px 88px; text-align: center; position: relative; overflow: hidden; }
-    .hero::before { content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%); width: 900px; height: 900px; background: radial-gradient(circle, rgba(124,106,247,.13) 0%, transparent 68%); pointer-events: none; }
-    .hero::after { content: ''; position: absolute; bottom: -50px; right: -80px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(168,85,247,.08) 0%, transparent 68%); pointer-events: none; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(124,106,247,.1); border: 1px solid rgba(124,106,247,.28); border-radius: 100px; padding: 7px 18px; font-size: .78rem; font-weight: 700; color: var(--primary); margin-bottom: 22px; position: relative; z-index: 1; letter-spacing: .3px; }
-    .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--success); display: inline-block; animation: pulse 1.6s infinite; }
-    .hero h1 { font-size: clamp(2rem, 4.5vw, 3.6rem); font-weight: 900; line-height: 1.08; position: relative; z-index: 1; margin-bottom: 18px; letter-spacing: -1px; }
-    .hero h1 .g1 { background: linear-gradient(90deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .hero h1 .g2 { background: linear-gradient(90deg, var(--accent), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .hero-sub { font-size: .98rem; color: var(--text2); max-width: 580px; margin: 0 auto 36px; line-height: 1.75; position: relative; z-index: 1; }
-    .hero-cta { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; position: relative; z-index: 1; margin-bottom: 60px; }
-    .btn-zalo { display: inline-flex; align-items: center; gap: 9px; padding: 14px 34px; background: var(--zalo); border: none; border-radius: 12px; color: #fff; font-size: .95rem; font-weight: 800; cursor: pointer; font-family: inherit; text-decoration: none; transition: .2s; box-shadow: 0 8px 28px rgba(0,104,255,.3); }
-    .btn-zalo:hover { opacity: .9; transform: translateY(-2px); }
-    .btn-outline { display: inline-flex; align-items: center; gap: 9px; padding: 14px 34px; border: 1.5px solid var(--border2); border-radius: 12px; color: var(--text); font-size: .95rem; font-weight: 700; cursor: pointer; font-family: inherit; text-decoration: none; transition: .2s; background: transparent; }
-    .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
-    .hero-stats { display: flex; justify-content: center; gap: 44px; flex-wrap: wrap; position: relative; z-index: 1; }
-    .stat { text-align: center; }
-    .stat-num { font-size: 1.7rem; font-weight: 900; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .stat-label { font-size: .75rem; color: var(--text3); margin-top: 3px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; }
-
-    /* SECTION COMMON */
-    .section { padding: 70px 24px; max-width: 1280px; margin: auto; }
-    .section-head { text-align: center; margin-bottom: 44px; }
-    .section-tag { display: inline-block; font-size: .72rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--primary); background: rgba(124,106,247,.1); border: 1px solid rgba(124,106,247,.25); border-radius: 100px; padding: 5px 14px; margin-bottom: 14px; }
-    .section-head h2 { font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 900; margin-bottom: 10px; letter-spacing: -.5px; }
-    .section-head p { color: var(--text2); font-size: .88rem; line-height: 1.7; max-width: 560px; margin: 0 auto; }
-
-    /* FILTER TABS */
-    .filter-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 28px; }
-    .filter-tabs { display: flex; gap: 6px; flex-wrap: wrap; flex: 1; }
-    .filter-tab { padding: 8px 18px; border-radius: 10px; border: 1.5px solid var(--border); background: transparent; color: var(--text2); font-size: .82rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: .2s; letter-spacing: .2px; }
-    .filter-tab.active, .filter-tab:hover { background: linear-gradient(135deg, var(--primary), var(--secondary)); border-color: transparent; color: #fff; box-shadow: 0 4px 16px rgba(124,106,247,.25); }
-
-    /* SECTION DIVIDERS */
-    .section-divider { max-width: 1280px; margin: 0 auto; padding: 0 24px 32px; }
-    .divider-label { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
-    .divider-label h3 { font-size: 1rem; font-weight: 800; white-space: nowrap; letter-spacing: -.3px; }
-    .divider-line { flex: 1; height: 1px; background: var(--border); }
-    .roman { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; background: linear-gradient(135deg, var(--primary), var(--secondary)); font-size: .75rem; font-weight: 900; color: #fff; flex-shrink: 0; }
-
-    /* PRODUCT GRID */
-    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-    .product-card { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: .3s; position: relative; display: flex; flex-direction: column; cursor: pointer; }
-    .product-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: var(--border2); }
-    .product-card.hot::after { content: '🔥 Nổi bật'; position: absolute; top: 14px; right: 14px; background: linear-gradient(135deg, var(--gold), #ef4444); color: #fff; font-size: .68rem; font-weight: 800; padding: 3px 10px; border-radius: 100px; letter-spacing: .3px; }
-    .pc-head { padding: 20px 20px 0; display: flex; align-items: center; gap: 14px; }
-    .pc-icon { width: 54px; height: 54px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0; }
-    .pc-name { font-size: .95rem; font-weight: 800; margin-bottom: 4px; line-height: 1.3; }
-    .pc-tag { font-size: .7rem; color: var(--text3); background: var(--bg3); padding: 2px 9px; border-radius: 5px; display: inline-block; font-weight: 600; }
-    .pc-body { padding: 14px 20px; flex: 1; }
-    .pc-desc { font-size: .8rem; color: var(--text2); line-height: 1.65; margin-bottom: 13px; }
-    .pc-feats { display: flex; flex-direction: column; gap: 5px; }
-    .pf { display: flex; align-items: center; gap: 8px; font-size: .78rem; color: var(--text2); }
-    .pf::before { content: '✓'; color: var(--success); font-weight: 800; flex-shrink: 0; font-size: .8rem; }
-    .pc-foot { padding: 14px 20px 18px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); margin-top: auto; }
-    .price-ref { font-size: .68rem; color: var(--text3); margin-bottom: 2px; font-weight: 600; letter-spacing: .3px; text-transform: uppercase; }
-    .price-val { font-size: 1.25rem; font-weight: 900; color: var(--primary); }
-    .price-note { font-size: .67rem; color: var(--text3); margin-top: 1px; }
-    .zalo-btn { display: inline-flex; align-items: center; gap: 7px; padding: 9px 18px; background: var(--zalo); border: none; border-radius: 10px; color: #fff; font-size: .8rem; font-weight: 800; cursor: pointer; font-family: inherit; transition: .2s; }
-    .zalo-btn:hover { opacity: .85; transform: scale(1.03); }
-
-    /* VIDEO AI CARD */
-    .video-card { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: .3s; position: relative; display: flex; flex-direction: column; cursor: pointer; }
-    .video-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(124,106,247,.22); border-color: var(--border2); }
-    .video-card.premium::after { content: '⭐ Cao cấp'; position: absolute; top: 14px; right: 14px; background: linear-gradient(135deg, #f59e0b, #ef4444); color: #fff; font-size: .68rem; font-weight: 800; padding: 3px 10px; border-radius: 100px; z-index: 5; }
-    .vid-preview { height: 168px; position: relative; overflow: hidden; flex-shrink: 0; }
-    .vid-preview .vbg { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
-    .vid-preview .vbg svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-    .vid-preview .v-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,.6) 100%); }
-    .vid-preview .v-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 2.4rem; z-index: 3; filter: drop-shadow(0 4px 12px rgba(0,0,0,.5)); animation: vFloat 3s ease-in-out infinite; }
-    @keyframes vFloat { 0%, 100% { transform: translate(-50%,-50%) scale(1); } 50% { transform: translate(-50%,-53%) scale(1.05); } }
-    .vid-preview .v-label { position: absolute; bottom: 10px; left: 14px; z-index: 4; font-size: .72rem; font-weight: 800; color: rgba(255,255,255,.9); letter-spacing: .5px; text-transform: uppercase; text-shadow: 0 1px 4px rgba(0,0,0,.6); }
-    .vid-preview .v-quality { position: absolute; bottom: 10px; right: 14px; z-index: 4; font-size: .68rem; font-weight: 800; color: #fff; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25); border-radius: 6px; padding: 2px 8px; backdrop-filter: blur(6px); }
-    .vid-preview .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 46px; height: 46px; border-radius: 50%; background: rgba(255,255,255,.18); border: 2px solid rgba(255,255,255,.5); display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); z-index: 10; transition: .2s; opacity: 0; }
-    .video-card:hover .play-btn { opacity: 1; }
-    .play-btn::after { content: ''; width: 0; height: 0; border-left: 14px solid white; border-top: 9px solid transparent; border-bottom: 9px solid transparent; margin-left: 3px; }
-    .wave-bars { position: absolute; bottom: 28px; left: 14px; display: flex; gap: 3px; align-items: flex-end; z-index: 3; opacity: .7; }
-    .wb { width: 3px; border-radius: 2px; background: rgba(255,255,255,.6); animation: wbAnim 1.2s ease-in-out infinite; }
-    .wb:nth-child(1) { height: 10px; animation-delay: 0s; }
-    .wb:nth-child(2) { height: 18px; animation-delay: .1s; }
-    .wb:nth-child(3) { height: 14px; animation-delay: .2s; }
-    .wb:nth-child(4) { height: 22px; animation-delay: .15s; }
-    .wb:nth-child(5) { height: 12px; animation-delay: .3s; }
-    .wb:nth-child(6) { height: 20px; animation-delay: .05s; }
-    .wb:nth-child(7) { height: 8px; animation-delay: .25s; }
-    @keyframes wbAnim { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(1.6); } }
-    .video-card .pc-head { padding: 18px 18px 0; }
-    .video-card .pc-body { padding: 12px 18px; flex: 1; }
-    .video-card .pc-foot { padding: 12px 18px 16px; border-top: 1px solid var(--border); }
-
-    /* PHOTOSHOP SECTION */
-    .ps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
-    .ps-card { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 22px; display: flex; flex-direction: column; gap: 14px; transition: .3s; position: relative; overflow: hidden; cursor: pointer; }
-    .ps-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #f472b6, #a855f7, #7c6af7); }
-    .ps-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--border2); }
-    .ps-icon-wrap { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
-    .ps-name { font-size: .92rem; font-weight: 800; margin-bottom: 4px; line-height: 1.3; }
-    .ps-desc { font-size: .79rem; color: var(--text2); line-height: 1.6; }
-    .ps-foot { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 10px; border-top: 1px solid var(--border); }
-
-    /* CONTACT SECTION */
-    .contact-section { padding: 70px 24px; background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%); }
-    .contact-inner { max-width: 1000px; margin: auto; }
-    .contact-box { background: var(--card); border: 1.5px solid var(--border); border-radius: 24px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
-    .contact-left { padding: 44px; background: linear-gradient(135deg, rgba(124,106,247,.08), rgba(168,85,247,.06)); border-right: 1px solid var(--border); position: relative; overflow: hidden; }
-    .contact-left::before { content: ''; position: absolute; top: -80px; right: -80px; width: 260px; height: 260px; border-radius: 50%; background: radial-gradient(circle, rgba(124,106,247,.12), transparent); }
-    .contact-left h2 { font-size: 1.55rem; font-weight: 900; margin-bottom: 10px; line-height: 1.25; letter-spacing: -.5px; }
-    .contact-left h2 span { background: linear-gradient(90deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .contact-left p { font-size: .85rem; color: var(--text2); line-height: 1.7; margin-bottom: 24px; }
-    .contact-info-list { display: flex; flex-direction: column; gap: 12px; }
-    .ci { display: flex; align-items: center; gap: 12px; font-size: .83rem; color: var(--text2); }
-    .ci-ico { width: 34px; height: 34px; border-radius: 9px; background: rgba(124,106,247,.15); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
-    .ci strong { color: var(--text); font-weight: 700; }
-    .contact-right { padding: 44px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 20px; }
-    .owner-avatar { width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--accent)); display: flex; align-items: center; justify-content: center; font-size: 2.6rem; border: 3px solid rgba(124,106,247,.3); box-shadow: 0 8px 32px rgba(124,106,247,.25); }
-    .owner-name { font-size: 1.2rem; font-weight: 900; margin-bottom: 4px; }
-    .owner-role { font-size: .8rem; color: var(--text2); font-weight: 600; }
-    .zalo-big-btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 36px; background: var(--zalo); border: none; border-radius: 14px; color: #fff; font-size: 1rem; font-weight: 800; cursor: pointer; font-family: inherit; text-decoration: none; transition: .2s; box-shadow: 0 8px 28px rgba(0,104,255,.35); letter-spacing: .2px; }
-    .zalo-big-btn:hover { opacity: .9; transform: translateY(-3px); box-shadow: 0 14px 40px rgba(0,104,255,.45); }
-    .zalo-number { font-size: .85rem; color: var(--text2); font-weight: 600; }
-    .zalo-note { font-size: .75rem; color: var(--text3); line-height: 1.5; max-width: 240px; text-align: center; }
-
-    /* FOOTER */
-    footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 48px 24px 28px; margin-top: 20px; }
-    .footer-inner { max-width: 1280px; margin: auto; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 36px; }
-    .footer-logo { font-size: 1.15rem; font-weight: 900; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; margin-bottom: 12px; }
-    .footer-desc { font-size: .8rem; color: var(--text2); line-height: 1.7; margin-bottom: 16px; }
-    .footer-tags { display: flex; gap: 7px; flex-wrap: wrap; }
-    .footer-tag { font-size: .7rem; background: var(--bg3); border: 1px solid var(--border); border-radius: 6px; padding: 3px 10px; color: var(--text3); }
-    .footer-col h4 { font-size: .83rem; font-weight: 800; margin-bottom: 14px; letter-spacing: .3px; text-transform: uppercase; color: var(--text); }
-    .footer-col ul { list-style: none; padding: 0; }
-    .footer-col ul li { margin-bottom: 9px; font-size: .78rem; color: var(--text2); }
-    .footer-col ul li a { color: var(--text2); text-decoration: none; transition: .2s; cursor: pointer; }
-    .footer-col ul li a:hover { color: var(--primary); }
-    .footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: .75rem; color: var(--text3); }
-
-    /* FLOAT ZALO */
-    .float-zalo { position: fixed; bottom: 26px; left: 26px; z-index: 150; display: flex; align-items: center; gap: 10px; background: var(--zalo); border: none; border-radius: 100px; padding: 13px 22px; color: #fff; font-size: .85rem; font-weight: 800; cursor: pointer; font-family: inherit; box-shadow: 0 8px 28px rgba(0,104,255,.4); animation: floatBounce 2.5s ease-in-out infinite; text-decoration: none; }
-    @keyframes floatBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
-
-    /* MODAL */
-    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.75); backdrop-filter: blur(10px); z-index: 200; align-items: center; justify-content: center; padding: 20px; }
-    .modal-overlay.open { display: flex; }
-    .modal { background: var(--card); border: 1.5px solid var(--border); border-radius: 22px; width: 100%; max-width: 480px; max-height: 90vh; overflow-y: auto; animation: modalIn .3s ease; }
-    @keyframes modalIn { from { opacity: 0; transform: scale(.94) translateY(24px); } to { opacity: 1; transform: scale(1) translateY(0); } }
-    .modal-head { padding: 24px 24px 0; display: flex; align-items: flex-start; gap: 14px; }
-    .modal-icon-wrap { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; text-align: center; }
-    .modal-title { font-size: 1.05rem; font-weight: 800; margin-bottom: 4px; line-height: 1.3; }
-    .modal-sub { font-size: .75rem; color: var(--text2); font-weight: 600; }
-    .modal-close { margin-left: auto; background: rgba(255,255,255,.06); border: 1px solid var(--border); border-radius: 9px; width: 33px; height: 33px; color: var(--text2); font-size: 1rem; cursor: pointer; transition: .2s; flex-shrink: 0; margin-top: 2px; }
-    .modal-close:hover { color: var(--text); background: rgba(255,255,255,.1); }
-    .modal-body { padding: 20px 24px 0; }
-    .modal-section { background: var(--bg3); border-radius: 12px; padding: 14px 16px; margin-bottom: 14px; }
-    .modal-section-title { font-size: .7rem; font-weight: 800; color: var(--primary); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
-    .modal-feats { display: flex; flex-direction: column; gap: 7px; }
-    .mf { font-size: .8rem; color: var(--text2); display: flex; align-items: center; gap: 8px; }
-    .mf::before { content: '✓'; color: var(--success); font-weight: 800; flex-shrink: 0; }
-    .modal-price-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-top: 1px solid var(--border); margin-top: 4px; }
-    .modal-price-label { font-size: .8rem; color: var(--text2); font-weight: 600; }
-    .modal-price-val { font-size: 1.4rem; font-weight: 900; color: var(--primary); }
-    .modal-note { font-size: .75rem; color: var(--text3); text-align: center; line-height: 1.6; margin-bottom: 12px; }
-    .modal-zalo-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 15px; background: var(--zalo); border: none; border-radius: 12px; color: #fff; font-size: .95rem; font-weight: 800; cursor: pointer; font-family: inherit; transition: .2s; text-decoration: none; letter-spacing: .2px; }
-    .modal-zalo-btn:hover { opacity: .9; transform: translateY(-1px); }
-    .modal-foot { padding: 16px 24px 24px; }
-
-    /* NOTIF */
-    .notif { position: fixed; bottom: 82px; left: 26px; z-index: 151; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 12px 16px; font-size: .78rem; display: flex; align-items: center; gap: 10px; max-width: 270px; animation: toastIn .3s ease; box-shadow: 0 8px 28px rgba(0,0,0,.35); }
-    .notif-av { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--secondary)); display: flex; align-items: center; justify-content: center; font-size: .82rem; flex-shrink: 0; }
-    .notif strong { font-weight: 800; display: block; color: var(--text); }
-    .notif-time { color: var(--text3); font-size: .68rem; }
-    @keyframes toastIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .5; transform: scale(.9); } }
-
-    /* RESPONSIVE */
-    @media(max-width: 900px) {
-      .contact-box { grid-template-columns: 1fr; }
-      .contact-left { border-right: none; border-bottom: 1px solid var(--border); }
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
-    }
-    @media(max-width: 680px) {
-      .footer-grid { grid-template-columns: 1fr; }
-      .nav a { display: none; }
-      .hero-stats { gap: 24px; }
-      .footer-bottom { justify-content: center; text-align: center; }
-    }
-    @media(max-width: 480px) {
-      .filter-tab { padding: 6px 12px; font-size: .78rem; }
-      .hero { padding: 120px 16px 64px; }
-    }
-
-    /* ─── CHAT WIDGET ─── */
-    .chat-fab { position: fixed; bottom: 26px; right: 26px; z-index: 150; width: 58px; height: 58px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--secondary)); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 28px rgba(124,106,247,.5); transition: .25s; font-size: 1.45rem; }
-    .chat-fab:hover { transform: scale(1.1); box-shadow: 0 12px 36px rgba(124,106,247,.6); }
-    .chat-fab-dot { position: absolute; top: 4px; right: 4px; width: 11px; height: 11px; border-radius: 50%; background: var(--success); border: 2px solid var(--bg); animation: pulse 1.6s infinite; }
-    .chat-window { position: fixed; bottom: 96px; right: 26px; z-index: 149; width: 360px; max-width: calc(100vw - 32px); height: 520px; max-height: calc(100vh - 120px); background: var(--card); border: 1.5px solid var(--border2); border-radius: 22px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 24px 64px rgba(0,0,0,.55); }
-    .chat-window.hidden { display: none; }
-    .chat-window:not(.hidden) { animation: chatIn .3s cubic-bezier(.4,0,.2,1); }
-    @keyframes chatIn { from { opacity:0; transform: translateY(20px) scale(.96); } to { opacity:1; transform: translateY(0) scale(1); } }
-    .chat-win-head { padding: 16px 18px; background: linear-gradient(135deg, rgba(124,106,247,.18), rgba(168,85,247,.12)); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
-    .chat-av { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--accent)); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; border: 2px solid rgba(124,106,247,.35); }
-    .chat-win-info { flex: 1; }
-    .chat-win-name { font-size: .87rem; font-weight: 800; color: var(--text); }
-    .chat-win-status { font-size: .7rem; color: var(--success); font-weight: 600; display: flex; align-items: center; gap: 5px; }
-    .chat-win-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--success); display: inline-block; }
-    .chat-win-close { background: rgba(255,255,255,.06); border: 1px solid var(--border); border-radius: 8px; width: 30px; height: 30px; color: var(--text2); font-size: .9rem; cursor: pointer; transition: .2s; display: flex; align-items: center; justify-content: center; }
-    .chat-win-close:hover { color: var(--text); background: rgba(255,255,255,.12); }
-    .chat-messages { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; scroll-behavior: smooth; }
-    .chat-messages::-webkit-scrollbar { width: 4px; }
-    .chat-messages::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
-    .chat-msg { display: flex; gap: 8px; align-items: flex-end; }
-    .chat-msg.user { flex-direction: row-reverse; }
-    .chat-msg-av { width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--accent)); display: flex; align-items: center; justify-content: center; font-size: .8rem; flex-shrink: 0; }
-    .chat-bubble { max-width: 76%; padding: 10px 14px; border-radius: 16px; font-size: .81rem; line-height: 1.6; }
-    .chat-msg.bot .chat-bubble { background: var(--bg3); border: 1px solid var(--border); color: var(--text); border-bottom-left-radius: 4px; }
-    .chat-msg.user .chat-bubble { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #fff; border-bottom-right-radius: 4px; }
-    .chat-typing { display: flex; align-items: center; gap: 4px; padding: 10px 14px; }
-    .typing-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--text3); animation: typingBounce 1.2s infinite; }
-    .typing-dot:nth-child(2) { animation-delay: .2s; }
-    .typing-dot:nth-child(3) { animation-delay: .4s; }
-    @keyframes typingBounce { 0%,80%,100% { transform: translateY(0); opacity:.5; } 40% { transform: translateY(-6px); opacity:1; } }
-    .chat-input-row { padding: 12px 14px; border-top: 1px solid var(--border); display: flex; gap: 8px; align-items: flex-end; flex-shrink: 0; background: var(--bg2); }
-    .chat-input { flex: 1; background: var(--bg3); border: 1.5px solid var(--border); border-radius: 12px; padding: 9px 12px; color: var(--text); font-size: .82rem; font-family: inherit; outline: none; resize: none; max-height: 80px; min-height: 36px; line-height: 1.5; transition: .2s; }
-    .chat-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(124,106,247,.15); }
-    .chat-input::placeholder { color: var(--text3); }
-    .chat-send-btn { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: .2s; flex-shrink: 0; }
-    .chat-send-btn:hover { opacity: .88; transform: scale(1.06); }
-    .chat-send-btn:disabled { opacity: .45; cursor: not-allowed; transform: none; }
-    .chat-send-btn svg { width: 16px; height: 16px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-    .chat-quick-btns { padding: 0 14px 10px; display: flex; gap: 6px; flex-wrap: wrap; flex-shrink: 0; }
-    .chat-quick { padding: 5px 11px; border-radius: 100px; border: 1px solid var(--border2); background: rgba(124,106,247,.08); color: var(--primary); font-size: .72rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: .2s; white-space: nowrap; }
-    .chat-quick:hover { background: rgba(124,106,247,.2); }
-
-    /* ─── CART BUTTON IN HEADER ─── */
-    .cart-btn { position: relative; display: flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border: none; border-radius: 10px; padding: 9px 16px; color: #fff; font-size: .82rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: .2s; margin-left: 8px; }
-    .cart-btn:hover { opacity: .9; transform: translateY(-1px); }
-    .cart-badge { position: absolute; top: -6px; right: -6px; background: var(--accent); color: #fff; font-size: .65rem; font-weight: 900; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--bg); }
-    .cart-badge.hidden { display: none; }
-
-    /* ─── PRODUCT CARD BUTTONS ─── */
-    .card-btns { display: flex; gap: 8px; align-items: center; }
-    .add-cart-btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 14px; background: rgba(124,106,247,.15); border: 1.5px solid var(--border2); border-radius: 10px; color: var(--primary); font-size: .78rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: .2s; white-space: nowrap; }
-    .add-cart-btn:hover { background: rgba(124,106,247,.28); transform: scale(1.03); }
-    .add-cart-btn.added { background: rgba(34,211,165,.15); border-color: var(--success); color: var(--success); }
-
-    /* ─── CART SIDEBAR ─── */
-    .cart-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.6); backdrop-filter: blur(8px); z-index: 300; }
-    .cart-overlay.open { display: block; }
-    .cart-sidebar { position: fixed; top: 0; right: -420px; width: 420px; max-width: 100vw; height: 100vh; background: var(--bg2); border-left: 1px solid var(--border); z-index: 301; display: flex; flex-direction: column; transition: right .35s cubic-bezier(.4,0,.2,1); overflow: hidden; }
-    .cart-sidebar.open { right: 0; }
-    .cart-header { padding: 22px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; background: var(--bg3); }
-    .cart-header h3 { font-size: 1rem; font-weight: 900; }
-    .cart-close { background: rgba(255,255,255,.06); border: 1px solid var(--border); border-radius: 8px; width: 32px; height: 32px; color: var(--text2); font-size: .95rem; cursor: pointer; transition: .2s; }
-    .cart-close:hover { color: var(--text); }
-    .cart-items { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
-    .cart-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; height: 100%; color: var(--text3); font-size: .88rem; }
-    .cart-empty-icon { font-size: 3rem; opacity: .4; }
-    .cart-item { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 14px; display: flex; gap: 12px; align-items: flex-start; }
-    .cart-item-icon { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
-    .cart-item-info { flex: 1; min-width: 0; }
-    .cart-item-name { font-size: .83rem; font-weight: 700; margin-bottom: 4px; line-height: 1.3; }
-    .cart-item-tag { font-size: .68rem; color: var(--text3); margin-bottom: 6px; }
-    .cart-item-price { font-size: .92rem; font-weight: 900; color: var(--primary); }
-    .cart-item-remove { background: none; border: none; color: var(--text3); cursor: pointer; font-size: .9rem; padding: 4px; border-radius: 6px; transition: .2s; flex-shrink: 0; margin-top: -2px; }
-    .cart-item-remove:hover { color: var(--danger); background: rgba(239,68,68,.1); }
-    .cart-qty { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
-    .qty-btn { background: var(--bg3); border: 1px solid var(--border); border-radius: 6px; width: 26px; height: 26px; color: var(--text); font-size: .9rem; cursor: pointer; transition: .2s; display: flex; align-items: center; justify-content: center; font-weight: 700; }
-    .qty-btn:hover { border-color: var(--primary); color: var(--primary); }
-    .qty-num { font-size: .82rem; font-weight: 700; min-width: 20px; text-align: center; }
-
-    /* ─── CART FOOTER / CHECKOUT ─── */
-    .cart-footer { padding: 18px 20px; border-top: 1px solid var(--border); flex-shrink: 0; background: var(--bg3); }
-    .cart-summary { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-    .cart-total-label { font-size: .82rem; color: var(--text2); font-weight: 600; }
-    .cart-total-val { font-size: 1.3rem; font-weight: 900; color: var(--primary); }
-    .checkout-form { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
-    .checkout-input { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: 10px 14px; color: var(--text); font-size: .83rem; font-family: inherit; outline: none; transition: .2s; }
-    .checkout-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(124,106,247,.15); }
-    .checkout-input::placeholder { color: var(--text3); }
-    .checkout-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 14px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border: none; border-radius: 12px; color: #fff; font-size: .92rem; font-weight: 800; cursor: pointer; font-family: inherit; transition: .2s; box-shadow: 0 6px 20px rgba(124,106,247,.35); }
-    .checkout-btn:hover { opacity: .92; transform: translateY(-1px); }
-    .checkout-btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
-    .checkout-note { font-size: .7rem; color: var(--text3); text-align: center; margin-top: 8px; line-height: 1.5; }
-    .clear-cart-btn { background: none; border: none; color: var(--text3); font-size: .72rem; cursor: pointer; font-family: inherit; text-decoration: underline; margin-top: 6px; display: block; width: 100%; text-align: center; transition: .2s; }
-    .clear-cart-btn:hover { color: var(--danger); }
-
-    /* ─── SUCCESS TOAST ─── */
-    .success-toast { position: fixed; top: 80px; right: 24px; z-index: 400; background: var(--success); color: #fff; border-radius: 12px; padding: 14px 20px; font-size: .85rem; font-weight: 700; display: flex; align-items: center; gap: 10px; box-shadow: 0 8px 28px rgba(34,211,165,.35); animation: toastIn .3s ease; max-width: 320px; }
-    .success-toast.hidden { display: none; }
-
-    @media(max-width: 480px) {
-      .cart-sidebar { width: 100vw; }
-    }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Cửa Hàng AI - Công Hải | Lào Cai</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#f5c842;
+  --gold2:#e8a820;
+  --red:#e03c2f;
+  --red2:#b52e24;
+  --dark:#0d0a05;
+  --dark2:#181208;
+  --dark3:#221a08;
+  --card:#1e1608;
+  --card2:#2a2010;
+ --border:rgba(245,200,66,.18);
+ --border2:rgba(245,200,66,.35);
+  --text:#f5ead8;
+  --text2:#c8b890;
+  --text3:#7a6840;
+  --success:#3ecf8e;
+  --radius:14px;
+  --shadow:0 8px 40px rgba(245,200,66,.12);
+}
+body{font-family:'Lexend',sans-serif;background:var(--dark);color:var(--text);min-height:100vh;overflow-x:hidden}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--dark)}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+ 
+/* GRAIN OVERLAY */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");opacity:.4;pointer-events:none;z-index:0}
+ 
+/* HEADER */
+header{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(24px);background:rgba(13,10,5,.9);border-bottom:1px solid var(--border);transition:.3s}
+.header-inner{max-width:1200px;margin:auto;padding:0 24px;height:68px;display:flex;align-items:center;gap:16px}
+.logo{font-family:'Baloo 2',cursive;font-size:1.3rem;font-weight:800;color:var(--gold);text-decoration:none;display:flex;align-items:center;gap:8px;letter-spacing:.3px;text-shadow:0 0 20px rgba(245,200,66,.4)}
+.logo span{font-size:.75rem;background:var(--red);color:#fff;padding:2px 8px;border-radius:100px;font-family:'Lexend',sans-serif;font-weight:700;letter-spacing:.5px}
+.nav{display:flex;align-items:center;gap:4px;margin-left:auto}
+.nav a{color:var(--text2);font-size:.85rem;font-weight:500;padding:8px 14px;border-radius:8px;text-decoration:none;transition:.2s}
+.nav a:hover{color:var(--gold);background:rgba(245,200,66,.08)}
+.nav-btns{display:flex;gap:8px;margin-left:12px}
+.btn-gold{padding:9px 22px;border:none;border-radius:8px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--dark);font-size:.85rem;font-weight:800;cursor:pointer;text-decoration:none;transition:.2s;font-family:'Lexend',sans-serif;letter-spacing:.3px}
+.btn-gold:hover{opacity:.9;transform:translateY(-1px);box-shadow:0 6px 20px rgba(245,200,66,.35)}
+.btn-outline{padding:9px 22px;border:1px solid var(--border2);border-radius:8px;background:transparent;color:var(--gold);font-size:.85rem;font-weight:600;cursor:pointer;text-decoration:none;transition:.2s;font-family:'Lexend',sans-serif}
+.btn-outline:hover{background:rgba(245,200,66,.08)}
+ 
+/* HERO */
+.hero{padding:130px 24px 70px;text-align:center;position:relative;overflow:hidden}
+.hero-glow{position:absolute;top:-150px;left:50%;transform:translateX(-50%);width:900px;height:700px;background:radial-gradient(ellipse,rgba(245,200,66,.08) 0%,transparent 65%);pointer-events:none}
+.hero-glow2{position:absolute;bottom:-80px;right:-80px;width:500px;height:400px;background:radial-gradient(ellipse,rgba(224,60,47,.07) 0%,transparent 65%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,200,66,.1);border:1px solid rgba(245,200,66,.3);border-radius:100px;padding:6px 18px;font-size:.78rem;font-weight:700;color:var(--gold);margin-bottom:24px;position:relative;z-index:1;letter-spacing:.5px}
+.hero-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--success);display:inline-block;animation:pulse 1.5s infinite}
+.hero h1{font-family:'Baloo 2',cursive;font-size:clamp(2rem,5vw,3.8rem);font-weight:900;line-height:1.1;position:relative;z-index:1;margin-bottom:20px;letter-spacing:-.5px}
+.hero h1 .g{background:linear-gradient(135deg,var(--gold) 0%,#fffbe0 40%,var(--gold2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero h1 .r{color:var(--red)}
+.hero-sub{font-size:1rem;color:var(--text2);max-width:580px;margin:0 auto 36px;line-height:1.75;position:relative;z-index:1}
+.hero-cta{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;position:relative;z-index:1;margin-bottom:56px}
+.hero-cta .btn-big{padding:14px 36px;font-size:1rem;border-radius:10px}
+.hero-stats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;position:relative;z-index:1}
+.stat{text-align:center}
+.stat-num{font-family:'Baloo 2',cursive;font-size:1.7rem;font-weight:900;color:var(--gold)}
+.stat-label{font-size:.75rem;color:var(--text3);margin-top:2px;text-transform:uppercase;letter-spacing:.8px}
+ 
+/* DIVIDER */
+.divider{max-width:1200px;margin:0 auto;padding:0 24px}
+.divider hr{border:none;border-top:1px solid var(--border)}
+ 
+/* SECTION HEADER */
+.section-header{text-align:center;margin-bottom:36px;padding-top:8px}
+.section-tag{display:inline-block;background:rgba(245,200,66,.12);border:1px solid var(--border2);color:var(--gold);font-size:.72rem;font-weight:700;padding:4px 14px;border-radius:100px;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
+.section-header h2{font-family:'Baloo 2',cursive;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;margin-bottom:8px}
+.section-header p{color:var(--text2);font-size:.88rem}
+ 
+/* STEPS */
+.steps-section{padding:50px 24px 40px;max-width:1200px;margin:auto}
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.step-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:26px;position:relative;overflow:hidden;transition:.3s}
+.step-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2))}
+.step-card:hover{transform:translateY(-3px);border-color:var(--border2);box-shadow:var(--shadow)}
+.step-num{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:900;color:var(--dark);margin-bottom:14px}
+.step-card h3{font-size:.95rem;font-weight:700;margin-bottom:7px;color:var(--gold)}
+.step-card p{font-size:.82rem;color:var(--text2);line-height:1.65}
+ 
+/* PRODUCTS SECTION */
+.products-section{padding:40px 24px 60px;max-width:1200px;margin:auto}
+ 
+/* FILTER */
+.filter-bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:24px}
+.filter-tabs{display:flex;gap:6px;flex-wrap:wrap;flex:1}
+.filter-tab{padding:7px 16px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--text2);font-size:.8rem;font-weight:600;cursor:pointer;font-family:'Lexend',sans-serif;transition:.2s}
+.filter-tab.active,.filter-tab:hover{background:linear-gradient(135deg,var(--gold),var(--gold2));border-color:transparent;color:var(--dark)}
+ 
+/* PRODUCT GRID */
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.product-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:.3s;position:relative;cursor:pointer}
+.product-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(245,200,66,.14);border-color:var(--border2)}
+.product-card.hot::after{content:'🔥 Hot';position:absolute;top:12px;right:12px;background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:100px}
+.product-card.new::after{content:'✨ Mới';position:absolute;top:12px;right:12px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:#fff;font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:100px}
+.product-header{padding:20px 20px 0;display:flex;align-items:center;gap:14px}
+.product-icon{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+.product-name{font-size:.98rem;font-weight:700;margin-bottom:3px;color:var(--text)}
+.product-tag{font-size:.7rem;color:var(--text3);background:var(--dark3);padding:2px 8px;border-radius:4px;display:inline-block;font-weight:600;letter-spacing:.3px}
+.product-body{padding:14px 20px}
+.product-desc{font-size:.8rem;color:var(--text2);line-height:1.65;margin-bottom:14px}
+.product-features{display:flex;flex-direction:column;gap:5px;margin-bottom:14px}
+.feature{display:flex;align-items:center;gap:7px;font-size:.78rem;color:var(--text2)}
+.feature::before{content:'◆';color:var(--gold);font-size:.55rem;flex-shrink:0}
+.product-footer{padding:0 20px 18px;display:flex;align-items:center;justify-content:space-between}
+.price-old{font-size:.75rem;color:var(--text3);text-decoration:line-through}
+.price-new{font-size:1.2rem;font-weight:900;color:var(--gold);font-family:'Baloo 2',cursive}
+.price-period{font-size:.72rem;color:var(--text3)}
+.buy-btn{padding:8px 18px;background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:8px;color:var(--dark);font-size:.82rem;font-weight:800;cursor:pointer;font-family:'Lexend',sans-serif;transition:.2s;letter-spacing:.2px}
+.buy-btn:hover{opacity:.85;transform:scale(1.03)}
+ 
+/* CONTACT */
+.contact-section{padding:40px 24px 60px;max-width:1200px;margin:auto}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.contact-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:.3s;position:relative;overflow:hidden}
+.contact-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold2))}
+.contact-card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:var(--shadow)}
+.contact-icon{font-size:1.9rem;margin-bottom:12px}
+.contact-card h3{font-size:.95rem;font-weight:700;margin-bottom:3px;color:var(--gold)}
+.contact-card .sub{font-size:.8rem;color:var(--text2);font-weight:600;margin-bottom:8px}
+.contact-card p{font-size:.78rem;color:var(--text2);line-height:1.55;margin-bottom:16px}
+.contact-btn{display:inline-block;padding:9px 18px;background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:8px;color:var(--dark);font-size:.8rem;font-weight:800;text-decoration:none;transition:.2s;font-family:'Lexend',sans-serif}
+.contact-btn:hover{opacity:.85}
+.contact-btn.outline{background:transparent;border:1px solid var(--border2);color:var(--gold)}
+.contact-btn.outline:hover{background:rgba(245,200,66,.08)}
+ 
+/* QR SECTION */
+.qr-section{padding:30px 24px 60px;max-width:700px;margin:auto;text-align:center}
+.qr-box{background:var(--card);border:2px solid var(--border2);border-radius:20px;padding:36px;position:relative;overflow:hidden}
+.qr-box::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(245,200,66,.07),transparent 60%)}
+.qr-title{font-family:'Baloo 2',cursive;font-size:1.4rem;font-weight:800;color:var(--gold);margin-bottom:8px}
+.qr-sub{font-size:.83rem;color:var(--text2);margin-bottom:24px;line-height:1.6}
+.qr-placeholder{width:180px;height:180px;background:var(--dark3);border:2px dashed var(--border2);border-radius:14px;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:var(--text3);flex-direction:column;gap:8px}
+.qr-placeholder span{font-size:2rem}
+.qr-info{display:flex;flex-direction:column;gap:6px;font-size:.82rem;background:var(--dark3);border-radius:10px;padding:14px 20px;text-align:left;border:1px solid var(--border)}
+.qr-row{display:flex;justify-content:space-between;gap:16px}
+.qr-row .lbl{color:var(--text3)}
+.qr-row .val{color:var(--text);font-weight:700}
+ 
+/* CHAT WIDGET */
+.chat-widget{position:fixed;bottom:24px;right:24px;z-index:200}
+.chat-btn{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 4px 20px rgba(245,200,66,.4);transition:.2s;animation:bounce 2s ease-in-out infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.chat-btn:hover{transform:scale(1.1)!important;animation:none}
+.chat-popup{display:none;position:absolute;bottom:68px;right:0;width:320px;background:var(--card2);border:1px solid var(--border2);border-radius:18px;box-shadow:0 16px 48px rgba(0,0,0,.5);overflow:hidden;animation:popIn .25s ease}
+@keyframes popIn{from{opacity:0;transform:scale(.9) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.chat-popup.open{display:flex;flex-direction:column}
+.chat-head{background:linear-gradient(135deg,var(--dark3),var(--card));border-bottom:1px solid var(--border);padding:14px 16px;display:flex;align-items:center;gap:10px}
+.chat-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--red));display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.chat-head .info strong{font-size:.88rem;font-weight:700;color:var(--gold);display:block}
+.chat-head .info span{font-size:.72rem;color:var(--success);display:flex;align-items:center;gap:4px}
+.chat-head .info span::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--success);display:inline-block}
+.chat-close{margin-left:auto;background:transparent;border:none;color:var(--text3);font-size:1rem;cursor:pointer;padding:4px;transition:.2s}
+.chat-close:hover{color:var(--text)}
+.chat-msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;max-height:220px;min-height:120px}
+.chat-msgs::-webkit-scrollbar{width:3px}
+.chat-msgs::-webkit-scrollbar-thumb{background:var(--border)}
+.msg{max-width:88%;font-size:.8rem;line-height:1.55;padding:8px 12px;border-radius:12px;animation:fadeUp .2s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.msg.bot{background:var(--dark3);color:var(--text);border-bottom-left-radius:3px;align-self:flex-start;border:1px solid var(--border)}
+.msg.user{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--dark);font-weight:600;border-bottom-right-radius:3px;align-self:flex-end}
+.chat-input-row{padding:10px 12px;border-top:1px solid var(--border);display:flex;gap:8px;align-items:center}
+.chat-input{flex:1;background:var(--dark3);border:1px solid var(--border);border-radius:9px;padding:9px 12px;color:var(--text);font-size:.8rem;font-family:'Lexend',sans-serif;outline:none;transition:.2s}
+.chat-input:focus{border-color:var(--gold)}
+.chat-input::placeholder{color:var(--text3)}
+.chat-send{padding:9px 14px;background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:9px;color:var(--dark);font-size:.85rem;cursor:pointer;font-weight:700;transition:.2s}
+.chat-send:hover{opacity:.85}
+.chat-shortcuts{padding:4px 12px 10px;display:flex;gap:6px;flex-wrap:wrap}
+.shortcut{font-size:.7rem;background:var(--dark3);border:1px solid var(--border);border-radius:100px;padding:4px 10px;color:var(--text2);cursor:pointer;transition:.2s;white-space:nowrap}
+.shortcut:hover{border-color:var(--gold);color:var(--gold)}
+ 
+/* FLOAT ZALO */
+.float-zalo{position:fixed;bottom:24px;left:24px;z-index:150;display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#0068ff,#005be0);border:none;border-radius:100px;padding:11px 20px;color:#fff;font-size:.82rem;font-weight:700;cursor:pointer;font-family:'Lexend',sans-serif;box-shadow:0 6px 24px rgba(0,104,255,.35);animation:bounce 2s ease-in-out infinite}
+.float-zalo:hover{animation:none;transform:scale(1.04)}
+ 
+/* NOTIF */
+.notif{position:fixed;bottom:88px;left:24px;z-index:151;background:var(--card2);border:1px solid var(--border2);border-radius:12px;padding:12px 14px;font-size:.78rem;display:flex;align-items:center;gap:10px;max-width:260px;box-shadow:0 8px 24px rgba(0,0,0,.4);display:none;animation:fadeUp .3s ease}
+.notif-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--red));display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0}
+ 
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);z-index:300;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal{background:var(--card2);border:1px solid var(--border2);border-radius:20px;width:100%;max-width:500px;max-height:90vh;overflow-y:auto;animation:modalIn .3s ease}
+@keyframes modalIn{from{opacity:0;transform:scale(.95) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal::-webkit-scrollbar{width:4px}
+.modal::-webkit-scrollbar-thumb{background:var(--border)}
+.modal-header{padding:24px 24px 0;display:flex;align-items:center;gap:14px}
+.modal-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;background:var(--dark3);border:1px solid var(--border2)}
+.modal-title{font-size:1.1rem;font-weight:800;color:var(--gold)}
+.modal-sub{font-size:.78rem;color:var(--text3);margin-top:2px}
+.modal-close{margin-left:auto;background:var(--dark3);border:1px solid var(--border);border-radius:8px;width:32px;height:32px;color:var(--text2);font-size:1rem;cursor:pointer;transition:.2s}
+.modal-close:hover{color:var(--gold);border-color:var(--border2)}
+.modal-body{padding:20px 24px}
+.plan-list{display:flex;flex-direction:column;gap:9px;margin-bottom:18px}
+.plan-item{border:1px solid var(--border);border-radius:11px;padding:13px 15px;cursor:pointer;transition:.2s;display:flex;align-items:center;gap:12px}
+.plan-item:hover,.plan-item.selected{border-color:var(--gold);background:rgba(245,200,66,.07)}
+.plan-radio{width:17px;height:17px;border-radius:50%;border:2px solid var(--text3);flex-shrink:0;transition:.2s;display:flex;align-items:center;justify-content:center}
+.plan-item.selected .plan-radio{border-color:var(--gold);background:var(--gold)}
+.plan-radio::after{content:'';width:7px;height:7px;border-radius:50%;background:var(--dark);opacity:0;transition:.2s}
+.plan-item.selected .plan-radio::after{opacity:1}
+.plan-info{flex:1}
+.plan-name{font-size:.88rem;font-weight:700;color:var(--text)}
+.plan-detail{font-size:.73rem;color:var(--text2);margin-top:2px}
+.plan-price .p-new{font-size:1rem;font-weight:900;color:var(--gold);font-family:'Baloo 2',cursive}
+.plan-price .p-old{font-size:.7rem;color:var(--text3);text-decoration:line-through}
+.step-tabs{display:flex;gap:6px;margin-bottom:18px}
+.step-tab{flex:1;height:3px;border-radius:2px;background:var(--dark3)}
+.step-tab.done{background:var(--gold2)}
+.step-tab.active{background:linear-gradient(90deg,var(--gold),var(--gold2))}
+.input-group{margin-bottom:13px}
+.input-group label{display:block;font-size:.78rem;font-weight:600;color:var(--text2);margin-bottom:5px;letter-spacing:.2px}
+.input-group input,.input-group textarea,.input-group select{width:100%;padding:10px 13px;background:var(--dark3);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.83rem;font-family:'Lexend',sans-serif;outline:none;transition:.2s}
+.input-group input:focus{border-color:var(--gold)}
+.input-group input::placeholder{color:var(--text3)}
+.req{color:var(--red)}
+.order-summary{background:var(--dark3);border-radius:10px;padding:13px;margin-bottom:14px;font-size:.8rem;border:1px solid var(--border)}
+.order-summary .order-row{display:flex;justify-content:space-between;padding:4px 0;color:var(--text2)}
+.order-summary .order-row.total{font-weight:800;color:var(--gold);border-top:1px solid var(--border);padding-top:8px;margin-top:4px;font-size:.88rem}
+.modal-footer{padding:0 24px 22px}
+.full-btn{width:100%;padding:13px;background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:10px;color:var(--dark);font-size:.92rem;font-weight:900;cursor:pointer;font-family:'Lexend',sans-serif;transition:.2s;letter-spacing:.3px}
+.full-btn:hover{opacity:.9}
+.back-btn{width:100%;padding:10px;background:transparent;border:1px solid var(--border);border-radius:9px;color:var(--text2);cursor:pointer;font-family:'Lexend',sans-serif;font-size:.83rem;margin-top:7px;transition:.2s}
+.back-btn:hover{border-color:var(--border2);color:var(--text)}
+ 
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:96px;background:var(--card2);border:1px solid var(--success);border-radius:10px;padding:11px 18px;font-size:.82rem;font-weight:600;color:var(--success);z-index:999;animation:fadeUp .3s ease;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+ 
+/* FOOTER */
+footer{background:var(--dark2);border-top:1px solid var(--border);padding:48px 24px 28px;margin-top:20px}
+.footer-inner{max-width:1200px;margin:auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:36px;margin-bottom:36px}
+.footer-brand .logo{display:inline-block;margin-bottom:12px}
+.footer-brand p{font-size:.8rem;color:var(--text2);line-height:1.65;margin-bottom:14px}
+.footer-tags{display:flex;gap:7px;flex-wrap:wrap}
+.footer-tag{font-size:.7rem;background:var(--dark3);border:1px solid var(--border);border-radius:5px;padding:3px 9px;color:var(--text3)}
+.footer-col h4{font-size:.83rem;font-weight:800;margin-bottom:13px;color:var(--gold);letter-spacing:.3px;text-transform:uppercase}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:8px}
+.footer-col ul li a{font-size:.78rem;color:var(--text2);text-decoration:none;transition:.2s}
+.footer-col ul li a:hover{color:var(--gold)}
+.footer-col ul li span{font-size:.78rem;color:var(--text2)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:22px;text-align:center;font-size:.75rem;color:var(--text3)}
+ 
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+ 
+@media(max-width:768px){
+ .footer-grid{grid-template-columns:1fr 1fr;gap:24px}
+ .hero-stats{gap:28px}
+  .nav a{display:none}
+ .chat-popup{width:290px}
+}
+@media(max-width:480px){
+ .footer-grid{grid-template-columns:1fr}
+ .filter-tab{padding:6px 10px;font-size:.74rem}
+}
+</style>
 </head>
 <body>
-  <div id="root"></div>
-
-  <!-- CART SIDEBAR -->
-  <div id="cart-overlay" class="cart-overlay"></div>
-  <div id="cart-sidebar" class="cart-sidebar">
-    <div class="cart-header">
-      <h3>🛒 Giỏ hàng của bạn</h3>
-      <button class="cart-close" id="cart-close-btn">✕</button>
-    </div>
-    <div class="cart-items" id="cart-items-list"></div>
-    <div class="cart-footer" id="cart-footer">
-      <div class="cart-summary">
-        <div class="cart-total-label">Tổng cộng</div>
-        <div class="cart-total-val" id="cart-total">0₫</div>
-      </div>
-      <div class="checkout-form">
-        <input class="checkout-input" id="checkout-name" type="text" placeholder="Họ tên của bạn *" />
-        <input class="checkout-input" id="checkout-phone" type="tel" placeholder="Số điện thoại / Zalo *" />
-        <input class="checkout-input" id="checkout-note" type="text" placeholder="Ghi chú (tuỳ chọn)" />
-      </div>
-      <button class="checkout-btn" id="checkout-btn">🚀 Đặt mua qua Zalo</button>
-      <div class="checkout-note">Sau khi nhấn, Zalo sẽ mở tự động với thông tin đơn hàng đầy đủ.<br/>Chủ shop xác nhận & gửi link thanh toán cho bạn.</div>
-      <button class="clear-cart-btn" id="clear-cart-btn">Xoá toàn bộ giỏ hàng</button>
+ 
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">🏮 Cửa Hàng AI Mới Nhất <span>Lào Cai</span></a>
+    <nav class="nav">
+      <a href="#pricing">Sản phẩm</a>
+      <a href="#contact">Liên hệ</a>
+      <a href="#qr">Thanh toán</a>
+    </nav>
+    <div class="nav-btns">
+      <a href="https://zalo.me/0969258659" target="_blank" class="btn-outline">💬 Zalo</a>
+      <a href="#pricing" class="btn-gold">🛒 Mua ngay</a>
     </div>
   </div>
-  <div class="success-toast hidden" id="success-toast">✅ Đã thêm vào giỏ hàng!</div>
-
-  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-  <script type="text/babel">
-    const { useState, useEffect } = React;
-
-    const products = [
-      {id:'p1',cat:'prompt',icon:'🎤',hot:false,name:'Chèn Phụ Đề Video, Chữ Chạy Karaoke',tag:'App Tạo Prompt',desc:'Tự động tạo prompt chèn phụ đề chuẩn xác và hiệu ứng chữ chạy Karaoke sinh động, đồng bộ âm thanh hoàn hảo.',features:['Phụ đề tự động chính xác','Hiệu ứng Karaoke bắt mắt','Đồng bộ âm thanh','Đa dạng font & màu sắc'],price:99000,color:'linear-gradient(135deg,#7c6af7,#a855f7)'},
-      {id:'p2',cat:'prompt',icon:'🎙️',hot:false,name:'Chèn Phụ Đề & Lồng Tiếng Cho Video Trắng',tag:'App Tạo Prompt',desc:'Tạo prompt chuyên dụng để chèn phụ đề và lồng tiếng tự động cho video không có âm thanh (video trắng).',features:['Lồng tiếng tự động','Chèn phụ đề đồng bộ','Hỗ trợ nhiều ngôn ngữ','Xuất chất lượng cao'],price:129000,color:'linear-gradient(135deg,#f472b6,#a855f7)'},
-      {id:'p3',cat:'prompt',icon:'🎨',hot:true,name:'Tạo Ảnh Storyboard',tag:'App Tạo Prompt',desc:'Prompt tạo ảnh storyboard chuyên nghiệp theo cảnh quay, giúp lên kịch bản trực quan trước khi render video.',features:['Storyboard theo cảnh','Phong cách đa dạng','Chú thích tự động','Xuất PDF/PNG'],price:149000,color:'linear-gradient(135deg,#4facfe,#7c6af7)'},
-      {id:'p4',cat:'prompt',icon:'📈',hot:false,name:'SEO Một Kênh Mới Với Tiêu Đề Bất Kỳ',tag:'App Tạo Prompt',desc:'Tạo toàn bộ hệ thống SEO cho kênh YouTube mới: tiêu đề, mô tả, thẻ, lịch đăng bài tối ưu.',features:['Phân tích từ khóa','Tối ưu tiêu đề & mô tả','Lịch đăng bài','Chiến lược tăng sub'],price:179000,color:'linear-gradient(135deg,#22d3a5,#4facfe)'},
-      {id:'p5',cat:'prompt',icon:'🌐',hot:false,name:'SEO Video Song Ngữ Anh-Việt',tag:'App Tạo Prompt',desc:'Tối ưu hóa SEO đồng thời cho cả thị trường tiếng Anh và tiếng Việt, tăng khả năng tiếp cận toàn cầu.',features:['Từ khóa song ngữ','Mô tả Anh-Việt','Thẻ tối ưu 2 thị trường','Báo cáo phân tích'],price:199000,color:'linear-gradient(135deg,#f59e0b,#ef4444)'},
-      {id:'p6',cat:'prompt',icon:'📋',hot:false,name:'Sao Chép Kênh Đối Thủ',tag:'App Tạo Prompt',desc:'Phân tích và tạo prompt mô phỏng phong cách, nội dung, chiến lược của kênh đối thủ thành công.',features:['Phân tích kênh đối thủ','Mô phỏng phong cách','Tối ưu từ khóa tương tự','Báo cáo chi tiết'],price:199000,color:'linear-gradient(135deg,#a855f7,#f472b6)'},
-      {id:'p7',cat:'prompt',icon:'🖼️',hot:true,name:'Tạo Ảnh + Kịch Bản + Prompt',tag:'App Tạo Prompt',desc:'Bộ công cụ toàn diện: tạo ảnh AI, viết kịch bản và prompt hoàn chỉnh cho một video theo yêu cầu.',features:['Tạo ảnh AI chất lượng cao','Kịch bản hoàn chỉnh','Prompt chi tiết từng cảnh','Sẵn sàng render video'],price:249000,color:'linear-gradient(135deg,#f472b6,#f59e0b)'},
-      {id:'p8',cat:'prompt',icon:'🔬',hot:false,name:'X-Quang Ray',tag:'App Tạo Prompt',desc:'Ứng dụng tạo prompt chuyên biệt cho nội dung y tế, mô phỏng hình ảnh X-quang và giải thích kết quả.',features:['Mô phỏng ảnh X-quang','Giải thích chuyên môn','Kịch bản y khoa','Phong cách khoa học'],price:149000,color:'linear-gradient(135deg,#43e97b,#4facfe)'},
-      {id:'p9',cat:'prompt',icon:'⚛️',hot:false,name:'Vật Lý Rút Gọn',tag:'App Tạo Prompt',desc:'Prompt giải thích các hiện tượng vật lý phức tạp thành video ngắn dễ hiểu, trực quan sinh động.',features:['Giải thích vật lý đơn giản','Mô phỏng trực quan','Nội dung giáo dục','Phù hợp mọi lứa tuổi'],price:129000,color:'linear-gradient(135deg,#667eea,#43e97b)'},
-      {id:'p10',cat:'prompt',icon:'🖼️',hot:false,name:'Thumbnail + Tiêu Đề Video',tag:'App Tạo Prompt',desc:'Tạo prompt thiết kế thumbnail cuốn hút và tiêu đề video tối ưu click, tăng CTR lên tối đa.',features:['Thumbnail bắt mắt','Tiêu đề tối ưu CTR','A/B testing variants','Phân tích màu sắc'],price:99000,color:'linear-gradient(135deg,#f59e0b,#7c6af7)'},
-      {id:'p11',cat:'prompt',icon:'🏛️',hot:false,name:'Thần Thoại Nổi Tiếng Quốc Tế Chọn Lọc',tag:'App Tạo Prompt',desc:'Kho prompt về các câu chuyện thần thoại nổi tiếng thế giới được chọn lọc, phù hợp làm video kể chuyện.',features:['Thần thoại Hy Lạp, Norse, Ai Cập','Kịch bản kể chuyện','Nhân vật chi tiết','Bối cảnh lịch sử'],price:149000,color:'linear-gradient(135deg,#c471f5,#12c2e9)'},
-      {id:'p12',cat:'prompt',icon:'🎭',hot:false,name:'Nghệ Nhân',tag:'App Tạo Prompt',desc:'Prompt tạo nội dung về các nghề nghiệp truyền thống, nghệ nhân dân gian Việt Nam và quốc tế.',features:['Nghề truyền thống Việt Nam','Kỹ thuật đặc trưng','Kịch bản tôn vinh','Hình ảnh đặc sắc'],price:149000,color:'linear-gradient(135deg,#f59e0b,#ef4444)'},
-      {id:'p13',cat:'prompt',icon:'😄',hot:false,name:'Hài POV',tag:'App Tạo Prompt',desc:'Prompt tạo kịch bản hài hước theo góc nhìn POV (Point of View), trend hot trên TikTok & YouTube Shorts.',features:['Kịch bản POV trendy','Tình huống hài hước','Phù hợp TikTok/Shorts','Nhiều chủ đề đa dạng'],price:99000,color:'linear-gradient(135deg,#43e97b,#f59e0b)'},
-      {id:'p14',cat:'prompt',icon:'🏥',hot:false,name:'Hài Y Khoa',tag:'App Tạo Prompt',desc:'Prompt tạo nội dung hài hước về y tế, bệnh viện, bác sĩ — vừa vui vừa có kiến thức sức khỏe.',features:['Hài y khoa chuyên nghiệp','Kiến thức sức khỏe','Tình huống bệnh viện','An toàn & phù hợp'],price:99000,color:'linear-gradient(135deg,#4facfe,#43e97b)'},
-      {id:'p15',cat:'prompt',icon:'👥',hot:true,name:'Đồng Nhất Nhân Vật',tag:'App Tạo Prompt',desc:'Prompt giữ đồng nhất nhân vật xuyên suốt nhiều cảnh quay, đảm bảo gương mặt, phong cách nhất quán.',features:['Nhất quán nhân vật','Mô tả chi tiết khuôn mặt','Đồng bộ phong cách','Nhiều cảnh liền mạch'],price:199000,color:'linear-gradient(135deg,#f472b6,#7c6af7)'},
-      {id:'p16',cat:'prompt',icon:'🚑',hot:false,name:'Chuyên Đề Cứu Hộ',tag:'App Tạo Prompt',desc:'Prompt tạo nội dung về cứu hộ, phòng cháy chữa cháy, y tế cấp cứu — giáo dục cộng đồng hiệu quả.',features:['Kịch bản cứu hộ thực tế','Hướng dẫn an toàn','Nội dung giáo dục','Hình ảnh chuyên nghiệp'],price:149000,color:'linear-gradient(135deg,#ef4444,#f59e0b)'},
-      {id:'p17',cat:'prompt',icon:'📄',hot:false,name:'Tạo Poster',tag:'App Tạo Prompt',desc:'Prompt chuyên tạo poster sự kiện, quảng cáo, thông báo với bố cục đẹp và thông điệp rõ ràng.',features:['Poster sự kiện & quảng cáo','Bố cục chuyên nghiệp','Nhiều kích thước','Màu sắc hài hòa'],price:99000,color:'linear-gradient(135deg,#a855f7,#4facfe)'},
-      {id:'p18',cat:'prompt',icon:'🪧',hot:false,name:'Tạo Áp Phích',tag:'App Tạo Prompt',desc:'Prompt tạo áp phích nghệ thuật, tuyên truyền, vận động với phong cách đa dạng từ cổ điển đến hiện đại.',features:['Phong cách đa dạng','Thông điệp rõ ràng','Chữ nghệ thuật','In ấn chất lượng cao'],price:99000,color:'linear-gradient(135deg,#12c2e9,#a855f7)'},
-      {id:'p19',cat:'prompt',icon:'🎬',hot:true,name:'Tạo Kịch Bản Chuyên Cho Seedance 2.0',tag:'App Tạo Prompt',desc:'Prompt được thiết kế tối ưu riêng cho Seedance 2.0 — tạo kịch bản phù hợp cú pháp và khả năng AI này.',features:['Cú pháp Seedance 2.0','Kịch bản tối ưu render','Cảnh phức tạp chuyên nghiệp','Kết quả video xuất sắc'],price:249000,color:'linear-gradient(135deg,#22d3a5,#7c6af7)'},
-      {id:'v1',cat:'video',icon:'🎥',hot:true,name:'Veo 3 MAX',tag:'App Build Video AI',desc:'Google Veo 3 MAX — AI tạo video đỉnh cao nhất 2026. Chất lượng điện ảnh, âm thanh tích hợp, hiểu ngữ cảnh sâu.',features:['Video 4K siêu nét','Âm thanh AI tích hợp','Hiểu ngữ cảnh phức tạp','Chất lượng điện ảnh'],price:399000,preview:{colors:['#1a0a3d','#2d1b69','#4c1d95','#6d28d9'],label:'VEO 3 MAX',quality:'4K · AI Sound',icon:'🎥'},color:'linear-gradient(135deg,#4c1d95,#7c6af7)'},
-      {id:'v2',cat:'video',icon:'✨',hot:true,name:'Kling 3.1',tag:'App Build Video AI',desc:'Kling AI 3.1 từ Kuaishou — chuyển động cực mượt, vật lý thực tế, video dài tới 3 phút chất lượng cinema.',features:['Video dài tới 3 phút','Chuyển động siêu mượt','Vật lý thực tế','Xuất 1080p/4K HD'],price:299000,preview:{colors:['#0a1628','#0f2040','#1a3560','#2563eb'],label:'KLING 3.1',quality:'HD · 3 phút',icon:'✨'},color:'linear-gradient(135deg,#1e3a8a,#2563eb)'},
-      {id:'v3',cat:'video',icon:'🌀',hot:true,name:'Sora 2.0',tag:'App Build Video AI',desc:'OpenAI Sora 2.0 — mô hình tạo video đột phá nhất. Hiểu physics thực tế, cảnh đa nhân vật siêu phức tạp.',features:['Text-to-video đỉnh cao','Physics thực tế','Đa nhân vật & bối cảnh','Tích hợp ChatGPT'],price:349000,preview:{colors:['#0f1923','#1a2f3d','#0a3d2e','#065f46'],label:'SORA 2.0',quality:'OpenAI · MAX',icon:'🌀'},color:'linear-gradient(135deg,#064e3b,#059669)'},
-      {id:'v4',cat:'video',icon:'🎞️',hot:false,name:'Storyboard 4 Cảnh (Mỗi Cảnh 8 Giây)',tag:'App Build Video AI',desc:'Tạo video storyboard 4 cảnh liền mạch, mỗi cảnh 8 giây — tổng 32 giây video hoàn chỉnh chuyên nghiệp.',features:['4 cảnh liền mạch','Mỗi cảnh 8 giây chính xác','Nhân vật đồng nhất','Xuất video hoàn chỉnh'],price:299000,preview:{colors:['#1c1917','#292524','#3d2b1f','#78350f'],label:'STORYBOARD',quality:'4×8s · 32s Total',icon:'🎞️'},color:'linear-gradient(135deg,#78350f,#d97706)'},
-      {id:'v5',cat:'video',icon:'💎',hot:true,name:'KIM BẤT HOÁN',tag:'App Build Video AI',desc:'Bộ tổng hợp AI render video cao cấp — kết hợp nhiều AI mạnh nhất để cho ra video không thể thay thế.',features:['Tổng hợp đa AI render','Chất lượng đỉnh cao','Không thể sao chép','Bộ công cụ hoàn chỉnh'],price:499000,preview:{colors:['#1c0a00','#3d1500','#7c2d12','#b45309'],label:'KIM BẤT HOÁN',quality:'GOLD · Elite',icon:'💎'},color:'linear-gradient(135deg,#7c2d12,#f59e0b)'},
-      {id:'v6',cat:'video',icon:'💠',hot:true,name:'VIÊN NGỌC VÔ GIÁ',tag:'App Build Video AI',desc:'Tổng hợp các AI render video tốt nhất — viên ngọc vô giá trong bộ sưu tập công cụ AI 2026.',features:['Multi-AI rendering','Chất lượng không giới hạn','Hiếm có trên thị trường','Hỗ trợ chuyên sâu'],price:499000,preview:{colors:['#0a1628','#0c2240','#0e3460','#0c4a6e'],label:'VIÊN NGỌC VÔ GIÁ',quality:'PLATINUM · MAX',icon:'💠'},color:'linear-gradient(135deg,#0c4a6e,#38bdf8)'},
-      {id:'v7',cat:'video',icon:'🔴',hot:false,name:'RunWay Gen Kim Cương Đỏ',tag:'App Build Video AI',desc:'RunWay Gen với gói Kim Cương Đỏ đặc biệt — tổng hợp AI render video đỉnh cao, tính năng không giới hạn.',features:['RunWay Gen đầy đủ','Tính năng không giới hạn','Xuất 4K chuyên nghiệp','Ưu tiên xử lý'],price:449000,preview:{colors:['#1c0000','#3d0000','#7c0a0a','#b91c1c'],label:'RUNWAY GEN',quality:'Kim Cương Đỏ',icon:'🔴'},color:'linear-gradient(135deg,#7f1d1d,#dc2626)'},
-      {id:'v8',cat:'video',icon:'🤖',hot:false,name:'Tích Hợp Các AI Mới',tag:'App Build Video AI',desc:'Cập nhật liên tục các AI mới nhất 2026 vào workflow của bạn — luôn dùng công cụ tiên tiến nhất.',features:['Cập nhật AI mới nhất','Tích hợp workflow','Đa nền tảng','Hỗ trợ cài đặt'],price:399000,preview:{colors:['#0f0f1a','#1a1a2e','#252545','#4338ca'],label:'AI MỚI NHẤT',quality:'2026 · Updated',icon:'🤖'},color:'linear-gradient(135deg,#312e81,#6d28d9)'},
-      {id:'v9',cat:'video',icon:'🌱',hot:true,name:'Seedance 2.0 Tốt Nhất',tag:'App Build Video AI',desc:'Seedance 2.0 — AI tạo video Trung Quốc xuất sắc nhất, tối ưu cho nội dung điện ảnh và thương mại.',features:['Seedance 2.0 bản tốt nhất','Chất lượng điện ảnh','Phù hợp nội dung TVC','Hỗ trợ tiếng Việt'],price:349000,preview:{colors:['#022c22','#064e3b','#065f46','#047857'],label:'SEEDANCE 2.0',quality:'BEST VERSION',icon:'🌱'},color:'linear-gradient(135deg,#022c22,#10b981)'},
-      {id:'v10',cat:'video',icon:'🚀',hot:true,name:'Siêu AI (Omni + Seedance + Kling + Sora…)',tag:'App Build Video AI',desc:'Bộ tổng hợp SIÊU AI đỉnh cao nhất: Omni + Seedance + Kling + Sora và nhiều AI khác — chất lượng video tốt nhất tuyệt đối.',features:['Omni + Seedance + Kling + Sora','Chất lượng video tốt nhất','Tổng hợp toàn bộ AI mạnh','Không giới hạn khả năng'],price:599000,preview:{colors:['#1a0533','#2d0a5e','#4c0f8a','#7c3aed'],label:'SIÊU AI',quality:'ULTIMATE · ALL-IN-ONE',icon:'🚀'},color:'linear-gradient(135deg,#4c0f8a,#ec4899)'},
-      {id:'ps1',cat:'ps',icon:'✨',hot:false,name:'Sắc Nét Ảnh + Mịn Da',tag:'Photoshop Action',desc:'Action tự động làm sắc nét ảnh và làm mịn da chuyên nghiệp, chỉ 1 click — kết quả như retoucher chuyên nghiệp.',features:['Sắc nét ảnh thông minh','Mịn da tự nhiên','Giữ chi tiết','1 click hoàn thành'],price:79000,color:'linear-gradient(135deg,#f472b6,#a855f7)'},
-      {id:'ps2',cat:'ps',icon:'🎨',hot:false,name:'Chỉnh Màu 1 Click',tag:'Photoshop Action',desc:'Bộ action chỉnh màu chuyên nghiệp: tone ảnh điện ảnh, vintage, nắng ấm — chỉ 1 click đẹp ngay.',features:['Nhiều phong cách màu','Tone điện ảnh','Màu vintage & warm','Xuất file chuyên nghiệp'],price:79000,color:'linear-gradient(135deg,#f59e0b,#ef4444)'},
-      {id:'ps3',cat:'ps',icon:'🩺',hot:false,name:'Sửa Các Loại Da Bị Lỗi',tag:'Photoshop Action',desc:'Action xử lý các lỗi da phức tạp: mụn, thâm, sẹo, vết nám — tái tạo làn da hoàn hảo tự nhiên.',features:['Xử lý mụn & thâm','Sửa sẹo hiệu quả','Làn da tự nhiên','Nhiều loại lỗi da'],price:99000,color:'linear-gradient(135deg,#22d3a5,#4facfe)'},
-      {id:'ps4',cat:'ps',icon:'🧹',hot:false,name:'Xóa Bụi Bẩn Trên Ảnh Cũ',tag:'Photoshop Action',desc:'Phục hồi ảnh cũ, xóa bụi bẩn, vết trầy xước, ố vàng — biến ảnh cũ thành ảnh mới chất lượng cao.',features:['Xóa bụi bẩn tự động','Phục hồi ảnh cũ','Khôi phục màu sắc','Nâng cấp chất lượng'],price:79000,color:'linear-gradient(135deg,#667eea,#764ba2)'},
-      {id:'ps5',cat:'ps',icon:'🔬',hot:false,name:'Xóa Lang Ben',tag:'Photoshop Action',desc:'Action chuyên biệt xóa lang ben, vết đốm trên da một cách tự nhiên, không để lại dấu vết xử lý.',features:['Xóa lang ben chính xác','Tự nhiên hoàn toàn','Giữ kết cấu da','Không dấu vết xử lý'],price:89000,color:'linear-gradient(135deg,#43e97b,#38f9d7)'},
-      {id:'ps6',cat:'ps',icon:'📷',hot:true,name:'Nâng Cấp Ảnh Lên 4K',tag:'Photoshop Action',desc:'Action AI upscale ảnh lên độ phân giải 4K, giữ chi tiết sắc nét — phù hợp in ấn và xuất bản chuyên nghiệp.',features:['Upscale lên 4K/8K','Giữ chi tiết sắc nét','AI super resolution','Phù hợp in ấn lớn'],price:129000,color:'linear-gradient(135deg,#f59e0b,#7c6af7)'},
-    ];
-
-    const notifs = [
-      {name:'Minh Tuấn', msg:' vừa hỏi mua <strong>Siêu AI</strong>', time:'2 phút trước'},
-      {name:'Thu Hà', msg:' vừa hỏi mua <strong>Veo 3 MAX</strong>', time:'5 phút trước'},
-      {name:'Hải Đăng', msg:' vừa hỏi mua <strong>KIM BẤT HOÁN</strong>', time:'7 phút trước'},
-      {name:'Văn Nam', msg:' vừa hỏi mua <strong>Seedance 2.0</strong>', time:'11 phút trước'},
-      {name:'Quỳnh Anh', msg:' vừa hỏi mua <strong>Sora 2.0</strong>', time:'14 phút trước'},
-      {name:'Trung Kiên', msg:' vừa hỏi mua <strong>Nâng cấp ảnh 4K</strong>', time:'18 phút trước'},
-    ];
-
-    function fmt(n) {
-      return n.toLocaleString('vi-VN') + '₫';
-    }
-
-    function VideoPreview({ p }) {
-      if (!p.preview) return null;
-      const { colors, label, quality, icon } = p.preview;
-      const numericId = p.id.replace(/\D/g, '') || '0';
-      return (
-        <div className="vid-preview">
-          <div className="vbg">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 168" preserveAspectRatio="none">
-              <defs>
-                <linearGradient id={`bg_${p.id}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style={{stopColor: colors[0]}} />
-                  <stop offset="40%" style={{stopColor: colors[1]}} />
-                  <stop offset="75%" style={{stopColor: colors[2]}} />
-                  <stop offset="100%" style={{stopColor: colors[3]}} />
-                </linearGradient>
-                <radialGradient id={`glow_${p.id}`} cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" style={{stopColor: 'rgba(255,255,255,0.08)'}} />
-                  <stop offset="100%" style={{stopColor: 'rgba(0,0,0,0)'}} />
-                </radialGradient>
-              </defs>
-              <rect width="360" height="168" fill={`url(#bg_${p.id})`} />
-              <rect width="360" height="168" fill={`url(#glow_${p.id})`} />
-              <line x1="0" y1="56" x2="360" y2="56" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
-              <line x1="0" y1="112" x2="360" y2="112" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
-              <line x1="120" y1="0" x2="120" y2="168" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
-              <line x1="240" y1="0" x2="240" y2="168" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
-              <rect x="0" y="160" width="360" height="4" fill="rgba(0,0,0,0.3)" />
-              <rect x="0" y="160" width={40 + parseInt(numericId) * 15} height="4" fill="rgba(255,255,255,0.5)" rx="2" />
-            </svg>
-          </div>
-          <div className="v-overlay"></div>
-          <div className="v-icon">{icon}</div>
-          <div className="play-btn"></div>
-          <div className="wave-bars">
-            <div className="wb"></div><div className="wb"></div><div className="wb"></div>
-            <div className="wb"></div><div className="wb"></div><div className="wb"></div><div className="wb"></div>
-          </div>
-          <div className="v-label">{label}</div>
-          <div className="v-quality">{quality}</div>
-        </div>
-      );
-    }
-
-    function App() {
-      const [filter, setFilter] = useState('all');
-      const [activeModal, setActiveModal] = useState(null);
-      const [notifIdx, setNotifIdx] = useState(-1);
-      const [showNotif, setShowNotif] = useState(false);
-
-      useEffect(() => {
-        let toShow, toHide;
-        const interval = setInterval(() => {
-          setNotifIdx(prev => (prev + 1) % notifs.length);
-          setShowNotif(true);
-          toHide = setTimeout(() => setShowNotif(false), 4200);
-        }, 9000);
-        toShow = setTimeout(() => {
-          setNotifIdx(0);
-          setShowNotif(true);
-          toHide = setTimeout(() => setShowNotif(false), 4200);
-        }, 4000);
-        return () => { clearInterval(interval); clearTimeout(toShow); clearTimeout(toHide); };
-      }, []);
-
-      const openZalo = (e) => {
-        if (e) e.stopPropagation();
-        window.open('https://zalo.me/0969258659', '_blank');
-      };
-
-      const handleFilterClick = (cat) => {
-        setFilter(cat);
-        document.getElementById('products')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      };
-
-      const renderSectionDivider = (roman, title) => (
-        <div className="section-divider" style={{padding: '0 0 24px'}}>
-          <div className="divider-label">
-            <div className="roman">{roman}</div>
-            <div className="divider-line"></div>
-            <h3 style={{color: 'var(--text2)', fontSize: '.85rem', whiteSpace: 'nowrap'}}>{title}</h3>
-            <div className="divider-line"></div>
-          </div>
-        </div>
-      );
-
-      const renderProducts = () => {
-        const cats = [
-          { key: 'prompt', roman: 'I', title: 'App Tạo Prompt & Ứng Dụng Khác' },
-          { key: 'video', roman: 'II', title: 'App Build Tạo Video Chất Lượng Cao' },
-          { key: 'ps', roman: 'III', title: 'Photoshop Actions Chuyên Nghiệp' }
-        ];
-        const showDividers = filter === 'all';
-        return cats.map(cat => {
-          if (filter !== 'all' && filter !== cat.key) return null;
-          const items = products.filter(p => p.cat === cat.key);
-          if (!items.length) return null;
-          return (
-            <React.Fragment key={cat.key}>
-              {showDividers && renderSectionDivider(cat.roman, cat.title)}
-              <div className={cat.key === 'ps' ? 'ps-grid' : 'product-grid'} style={{marginBottom: '32px'}}>
-                {items.map(p => {
-                  if (cat.key === 'ps') {
-                    return (
-                      <div key={p.id} className="ps-card" onClick={() => setActiveModal(p)}>
-                        <div className="ps-icon-wrap" style={{background: p.color}}>{p.icon}</div>
-                        <div>
-                          <div className="ps-name">{p.name}</div>
-                          <div className="ps-desc">{p.desc}</div>
-                        </div>
-                        <div className="ps-foot">
-                          <div>
-                            <div className="price-ref">Giá tham khảo</div>
-                            <div className="price-val">{fmt(p.price)}</div>
-                          </div>
-                          <div className="card-btns" onClick={e => e.stopPropagation()}>
-                            <button className="add-cart-btn" onClick={() => window.addToCart(p)}>🛒 Thêm</button>
-                            <button className="zalo-btn" onClick={(e) => openZalo(e)}>💬 Zalo</button>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  }
-                  if (cat.key === 'video') {
-                    return (
-                      <div key={p.id} className={`video-card${p.hot ? ' premium' : ''}`} onClick={() => setActiveModal(p)}>
-                        <VideoPreview p={p} />
-                        <div className="pc-head">
-                          <div className="pc-icon" style={{background: p.color}}>{p.icon}</div>
-                          <div>
-                            <div className="pc-name">{p.name}</div>
-                            <span className="pc-tag">{p.tag}</span>
-                          </div>
-                        </div>
-                        <div className="pc-body">
-                          <p className="pc-desc">{p.desc}</p>
-                          <div className="pc-feats">{p.features.map((f,i) => <div key={i} className="pf">{f}</div>)}</div>
-                        </div>
-                        <div className="pc-foot">
-                          <div>
-                            <div className="price-ref">Giá tham khảo</div>
-                            <div className="price-val">{fmt(p.price)}</div>
-                            <div className="price-note">Liên hệ Zalo để xác nhận</div>
-                          </div>
-                          <div className="card-btns" onClick={e => e.stopPropagation()}>
-                            <button className="add-cart-btn" onClick={() => window.addToCart(p)}>🛒</button>
-                            <button className="zalo-btn" onClick={(e) => openZalo(e)}>💬 Mua ngay</button>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  }
-                  return (
-                    <div key={p.id} className={`product-card${p.hot ? ' hot' : ''}`} onClick={() => setActiveModal(p)}>
-                      <div className="pc-head">
-                        <div className="pc-icon" style={{background: p.color}}>{p.icon}</div>
-                        <div>
-                          <div className="pc-name">{p.name}</div>
-                          <span className="pc-tag">{p.tag}</span>
-                        </div>
-                      </div>
-                      <div className="pc-body">
-                        <p className="pc-desc">{p.desc}</p>
-                        <div className="pc-feats">{p.features.map((f,i) => <div key={i} className="pf">{f}</div>)}</div>
-                      </div>
-                      <div className="pc-foot">
-                        <div>
-                          <div className="price-ref">Giá tham khảo</div>
-                          <div className="price-val">{fmt(p.price)}</div>
-                          <div className="price-note">Liên hệ Zalo để xác nhận</div>
-                        </div>
-                        <div className="card-btns" onClick={e => e.stopPropagation()}>
-                          <button className="add-cart-btn" onClick={() => window.addToCart(p)}>🛒</button>
-                          <button className="zalo-btn" onClick={(e) => openZalo(e)}>💬 Mua ngay</button>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </React.Fragment>
-          );
-        });
-      };
-
-      return (
-        <>
-          <header>
-            <div className="header-inner">
-              <a href="#" className="logo">🏪 CỬA HÀNG AI MỚI NHẤT</a>
-              <nav className="nav">
-                <a href="#products">Sản phẩm</a>
-                <a href="#contact">Liên hệ</a>
-              </nav>
-              <a href="https://zalo.me/0969258659" target="_blank" rel="noreferrer" className="zalo-header">💬 Zalo tư vấn</a>
-              <button className="cart-btn" onClick={() => window.openCart()}>
-                🛒 Giỏ hàng
-                <span className="cart-badge hidden" id="header-cart-badge">0</span>
-              </button>
-            </div>
-          </header>
-
-          <section className="hero">
-            <div className="hero-badge"><span className="live-dot"></span> Đang hoạt động · Lào Cai 2026 · Hỗ trợ thật sự</div>
-            <h1>Kho <span className="g1">App AI</span> Tạo Video<br />&amp; <span className="g2">Công Cụ Sáng Tạo</span> 2026</h1>
-            <p className="hero-sub">App Tạo Prompt · AI Render Video Chất Lượng Cao · Photoshop Actions chuyên nghiệp.<br />Liên hệ Zalo để được tư vấn &amp; hướng dẫn cài đặt chi tiết.</p>
-            <div className="hero-cta">
-              <a href="https://zalo.me/0969258659" target="_blank" rel="noreferrer" className="btn-zalo">💬 Nhắn Zalo: 0969 258 659</a>
-              <a href="#products" className="btn-outline">📦 Xem tất cả App</a>
-            </div>
-            <div className="hero-stats">
-              <div className="stat"><div className="stat-num">35+</div><div className="stat-label">App &amp; Action</div></div>
-              <div className="stat"><div className="stat-num">3</div><div className="stat-label">Danh mục</div></div>
-              <div className="stat"><div className="stat-num">24/7</div><div className="stat-label">Hỗ trợ Zalo</div></div>
-              <div className="stat"><div className="stat-num">2026</div><div className="stat-label">Cập nhật</div></div>
-            </div>
-          </section>
-
-          <div id="products" className="section">
-            <div className="section-head">
-              <span className="section-tag">📦 Kho sản phẩm</span>
-              <h2>Tất cả App &amp; Action AI</h2>
-              <p>Chọn danh mục để xem sản phẩm. Mọi giá hiển thị là <strong style={{color:'var(--primary)'}}>giá tham khảo</strong> — liên hệ Zalo để được báo giá chi tiết &amp; hướng dẫn cài đặt.</p>
-            </div>
-            <div className="filter-bar">
-              <div className="filter-tabs">
-                <button className={`filter-tab${filter==='all'?' active':''}`} onClick={() => handleFilterClick('all')}>🌐 Tất cả</button>
-                <button className={`filter-tab${filter==='prompt'?' active':''}`} onClick={() => handleFilterClick('prompt')}>I. App Tạo Prompt</button>
-                <button className={`filter-tab${filter==='video'?' active':''}`} onClick={() => handleFilterClick('video')}>II. App Build Video AI</button>
-                <button className={`filter-tab${filter==='ps'?' active':''}`} onClick={() => handleFilterClick('ps')}>III. Photoshop Actions</button>
-              </div>
-            </div>
-            <div id="productGrid">{renderProducts()}</div>
-          </div>
-
-          <section id="contact" className="contact-section">
-            <div className="contact-inner">
-              <div className="section-head" style={{marginBottom:'36px'}}>
-                <span className="section-tag">📞 Liên hệ</span>
-                <h2>Tư vấn &amp; Mua App qua Zalo</h2>
-                <p>Liên hệ trực tiếp để được tư vấn, hướng dẫn cài đặt và sử dụng chi tiết</p>
-              </div>
-              <div className="contact-box">
-                <div className="contact-left">
-                  <h2>Cần tư vấn?<br /><span>Nhắn Zalo ngay!</span></h2>
-                  <p>Chủ cửa hàng sẽ tư vấn trực tiếp về từng App, hướng dẫn cài đặt và hỗ trợ sau mua hàng tận tình.</p>
-                  <div className="contact-info-list">
-                    <div className="ci"><div className="ci-ico">📱</div><div><div style={{color:'var(--text3)',fontSize:'.7rem',fontWeight:600,marginBottom:'2px'}}>ZALO</div><strong>0969 258 659</strong></div></div>
-                    <div className="ci"><div className="ci-ico">👤</div><div><div style={{color:'var(--text3)',fontSize:'.7rem',fontWeight:600,marginBottom:'2px'}}>CHỦ CỬA HÀNG</div><strong>Công Hải</strong></div></div>
-                    <div className="ci"><div className="ci-ico">📍</div><div><div style={{color:'var(--text3)',fontSize:'.7rem',fontWeight:600,marginBottom:'2px'}}>ĐỊA CHỈ</div><strong>Thành Phố Lào Cai, Tỉnh Lào Cai</strong></div></div>
-                    <div className="ci"><div className="ci-ico">🕐</div><div><div style={{color:'var(--text3)',fontSize:'.7rem',fontWeight:600,marginBottom:'2px'}}>THỜI GIAN</div><strong>7:00 – 22:00, mỗi ngày</strong></div></div>
-                  </div>
-                </div>
-                <div className="contact-right">
-                  <div className="owner-avatar">👨‍💻</div>
-                  <div>
-                    <div className="owner-name">Công Hải</div>
-                    <div className="owner-role">Chủ Cửa Hàng AI Mới Nhất · Lào Cai</div>
-                  </div>
-                  <a href="https://zalo.me/0969258659" target="_blank" rel="noreferrer" className="zalo-big-btn">💬 Nhắn Zalo ngay</a>
-                  <div className="zalo-number">Zalo: 0969 258 659</div>
-                  <div className="zalo-note">Tư vấn miễn phí · Hướng dẫn cài đặt chi tiết · Hỗ trợ sau mua</div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <footer>
-            <div className="footer-inner">
-              <div className="footer-grid">
-                <div>
-                  <div className="footer-logo">🏪 CỬA HÀNG AI MỚI NHẤT</div>
-                  <div className="footer-desc">Cung cấp các App AI tạo video, prompt chuyên nghiệp và Photoshop Actions chất lượng cao. Chủ cửa hàng: <strong style={{color:'var(--text)'}}>Công Hải</strong> · Lào Cai.</div>
-                  <div className="footer-tags">
-                    <span className="footer-tag">App Prompt AI</span>
-                    <span className="footer-tag">Video AI</span>
-                    <span className="footer-tag">Photoshop</span>
-                    <span className="footer-tag">Lào Cai</span>
-                  </div>
-                </div>
-                <div className="footer-col">
-                  <h4>Danh mục</h4>
-                  <ul>
-                    <li><a onClick={() => handleFilterClick('prompt')}>App Tạo Prompt (19)</a></li>
-                    <li><a onClick={() => handleFilterClick('video')}>App Build Video AI (10)</a></li>
-                    <li><a onClick={() => handleFilterClick('ps')}>Photoshop Actions (6+)</a></li>
-                  </ul>
-                </div>
-                <div className="footer-col">
-                  <h4>Hỗ trợ</h4>
-                  <ul>
-                    <li><span>📱 Zalo: 0969 258 659</span></li>
-                    <li><span>👤 Công Hải</span></li>
-                    <li><span>📍 TP. Lào Cai, Lào Cai</span></li>
-                    <li><span>✓ Tư vấn miễn phí</span></li>
-                    <li><span>✓ Hướng dẫn cài đặt</span></li>
-                    <li><span>✓ Hỗ trợ sau mua</span></li>
-                  </ul>
-                </div>
-              </div>
-              <div className="footer-bottom">
-                <span>© 2026 CỬA HÀNG AI MỚI NHẤT · Công Hải · Lào Cai. Tất cả quyền được bảo lưu.</span>
-                <span>Giá hiển thị là giá tham khảo · Liên hệ Zalo để báo giá chính xác</span>
-              </div>
-            </div>
-          </footer>
-
-          <a href="https://zalo.me/0969258659" target="_blank" rel="noreferrer" className="float-zalo">💬 Zalo: 0969 258 659</a>
-
-          {showNotif && notifIdx >= 0 && (
-            <div className="notif">
-              <div className="notif-av">👤</div>
-              <div>
-                <strong>{notifs[notifIdx]?.name}</strong>
-                <span dangerouslySetInnerHTML={{__html: notifs[notifIdx]?.msg || ''}}></span>
-                <div className="notif-time">{notifs[notifIdx]?.time}</div>
-              </div>
-            </div>
-          )}
-
-          {activeModal && (
-            <div className="modal-overlay open" onClick={(e) => { if (e.target === e.currentTarget) setActiveModal(null); }}>
-              <div className="modal">
-                <div className="modal-head">
-                  <div className="modal-icon-wrap" style={{background: activeModal.color}}>{activeModal.icon}</div>
-                  <div>
-                    <div className="modal-title">{activeModal.name}</div>
-                    <div className="modal-sub">{activeModal.tag}</div>
-                  </div>
-                  <button className="modal-close" onClick={() => setActiveModal(null)}>✕</button>
-                </div>
-                <div className="modal-body">
-                  {activeModal.cat === 'video' && <VideoPreview p={activeModal} />}
-                  <div className="modal-section" style={{marginTop: activeModal.cat === 'video' ? '14px' : '0'}}>
-                    <div className="modal-section-title">Tính năng nổi bật</div>
-                    <div className="modal-feats">{activeModal.features.map((f,i) => <div key={i} className="mf">{f}</div>)}</div>
-                  </div>
-                  <div className="modal-section">
-                    <div className="modal-section-title">Mô tả</div>
-                    <p style={{fontSize:'.82rem',color:'var(--text2)',lineHeight:1.7}}>{activeModal.desc}</p>
-                  </div>
-                  <div className="modal-price-row">
-                    <div className="modal-price-label">💰 Giá tham khảo</div>
-                    <div className="modal-price-val">{fmt(activeModal.price)}</div>
-                  </div>
-                </div>
-                <div className="modal-foot">
-                  <p className="modal-note">Nhắn Zalo để được tư vấn, báo giá chính xác và hướng dẫn cài đặt chi tiết</p>
-                  <a href="https://zalo.me/0969258659" target="_blank" rel="noreferrer" className="modal-zalo-btn">💬 Liên hệ Zalo: 0969 258 659</a>
-                </div>
-              </div>
-            </div>
-          )}
-        </>
-      );
-    }
-
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(<App />);
-  </script>
-
-  <!-- CART LOGIC (vanilla JS, runs after React mounts) -->
-  <script>
-    // Cart state
-    let cart = [];
-
-    const ZALO_NUMBER = '0969258659';
-
-    function fmt(n) { return n.toLocaleString('vi-VN') + '₫'; }
-
-    function updateCartUI() {
-      const total = cart.reduce((s, item) => s + item.price * item.qty, 0);
-      const count = cart.reduce((s, item) => s + item.qty, 0);
-
-      // Badge
-      const badge = document.getElementById('header-cart-badge');
-      if (badge) {
-        badge.textContent = count;
-        badge.classList.toggle('hidden', count === 0);
-      }
-
-      // Total
-      const totalEl = document.getElementById('cart-total');
-      if (totalEl) totalEl.textContent = fmt(total);
-
-      // Items list
-      const listEl = document.getElementById('cart-items-list');
-      if (!listEl) return;
-
-      if (cart.length === 0) {
-        listEl.innerHTML = `
-          <div class="cart-empty">
-            <div class="cart-empty-icon">🛒</div>
-            <div>Giỏ hàng trống<br/><small style="font-size:.78rem">Hãy chọn sản phẩm bạn muốn mua</small></div>
-          </div>`;
-      } else {
-        listEl.innerHTML = cart.map(item => `
-          <div class="cart-item">
-            <div class="cart-item-icon" style="background:${item.color}">${item.icon}</div>
-            <div class="cart-item-info">
-              <div class="cart-item-name">${item.name}</div>
-              <div class="cart-item-tag">${item.tag}</div>
-              <div class="cart-item-price">${fmt(item.price)}</div>
-              <div class="cart-qty">
-                <button class="qty-btn" onclick="changeQty('${item.id}', -1)">−</button>
-                <span class="qty-num">${item.qty}</span>
-                <button class="qty-btn" onclick="changeQty('${item.id}', 1)">+</button>
-              </div>
-            </div>
-            <button class="cart-item-remove" onclick="removeFromCart('${item.id}')" title="Xoá">✕</button>
-          </div>`).join('');
-      }
-
-      // Checkout btn state
-      const btn = document.getElementById('checkout-btn');
-      if (btn) btn.disabled = cart.length === 0;
-    }
-
-    window.addToCart = function(product) {
-      const existing = cart.find(i => i.id === product.id);
-      if (existing) {
-        existing.qty++;
-      } else {
-        cart.push({ ...product, qty: 1 });
-      }
-      updateCartUI();
-      // Show toast
-      const toast = document.getElementById('success-toast');
-      toast.textContent = `✅ Đã thêm "${product.name.substring(0,28)}${product.name.length>28?'…':''}" vào giỏ!`;
-      toast.classList.remove('hidden');
-      clearTimeout(window._toastTimer);
-      window._toastTimer = setTimeout(() => toast.classList.add('hidden'), 2800);
-    };
-
-    window.removeFromCart = function(id) {
-      cart = cart.filter(i => i.id !== id);
-      updateCartUI();
-    };
-
-    window.changeQty = function(id, delta) {
-      const item = cart.find(i => i.id === id);
-      if (!item) return;
-      item.qty = Math.max(1, item.qty + delta);
-      updateCartUI();
-    };
-
-    window.openCart = function() {
-      document.getElementById('cart-overlay').classList.add('open');
-      document.getElementById('cart-sidebar').classList.add('open');
-      document.body.style.overflow = 'hidden';
-    };
-
-    function closeCart() {
-      document.getElementById('cart-overlay').classList.remove('open');
-      document.getElementById('cart-sidebar').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    // Checkout → open Zalo with pre-filled message
-    function doCheckout() {
-      const name = document.getElementById('checkout-name').value.trim();
-      const phone = document.getElementById('checkout-phone').value.trim();
-      const note = document.getElementById('checkout-note').value.trim();
-
-      if (!name) { document.getElementById('checkout-name').focus(); alert('Vui lòng nhập họ tên!'); return; }
-      if (!phone) { document.getElementById('checkout-phone').focus(); alert('Vui lòng nhập số điện thoại!'); return; }
-
-      const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
-      const itemLines = cart.map(i => `  • ${i.name}${i.qty > 1 ? ` x${i.qty}` : ''} — ${fmt(i.price * i.qty)}`).join('\n');
-
-      const msg = `🛒 ĐƠN ĐẶT HÀNG MỚI\n\n👤 Khách: ${name}\n📱 Liên hệ: ${phone}${note ? `\n📝 Ghi chú: ${note}` : ''}\n\n📦 SẢN PHẨM:\n${itemLines}\n\n💰 TỔNG: ${fmt(total)}\n\n(Đơn từ website CỬA HÀNG AI MỚI NHẤT)`;
-
-      const encoded = encodeURIComponent(msg);
-      window.open(`https://zalo.me/${ZALO_NUMBER}?text=${encoded}`, '_blank');
-    }
-
-    // Event listeners (wait for DOM)
-    document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('cart-close-btn')?.addEventListener('click', closeCart);
-      document.getElementById('cart-overlay')?.addEventListener('click', closeCart);
-      document.getElementById('checkout-btn')?.addEventListener('click', doCheckout);
-      document.getElementById('clear-cart-btn')?.addEventListener('click', () => {
-        if (confirm('Xoá toàn bộ giỏ hàng?')) { cart = []; updateCartUI(); }
-      });
-      updateCartUI();
-    });
-  </script>
-
-  <!-- ─── CHAT WIDGET HTML ─── -->
-  <button class="chat-fab" id="chat-fab-btn" title="Chat hỗ trợ">
-    💬<span class="chat-fab-dot"></span>
-  </button>
-
-  <div class="chat-window hidden" id="chat-window">
-    <div class="chat-win-head">
-      <div class="chat-av">🤖</div>
-      <div class="chat-win-info">
-        <div class="chat-win-name">AI Hỗ Trợ · Cửa Hàng AI</div>
-        <div class="chat-win-status">Đang hoạt động</div>
-      </div>
-      <button class="chat-win-close" id="chat-win-close">✕</button>
+</header>
+ 
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-badge"><span class="dot"></span> Cập nhật mới nhất 2025 · Hỗ trợ tận tình</div>
+  <h1>Bộ Công Cụ <span class="g">AI Chuyên Nghiệp</span><br/>Cho <span class="r">Creator & Developer</span></h1>
+  <p class="hero-sub">App tạo Prompt, AI render video chất lượng cao, Action Photoshop chuyên nghiệp. Tư vấn trực tiếp qua Zalo – hướng dẫn cài đặt chi tiết.</p>
+  <div class="hero-cta">
+    <a href="#pricing" class="btn-gold btn-big">🛒 Xem tất cả sản phẩm</a>
+    <a href="https://zalo.me/0969258659" target="_blank" class="btn-outline btn-big">💬 Tư vấn qua Zalo</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">50+</div><div class="stat-label">App & Tool AI</div></div>
+    <div class="stat"><div class="stat-num">3 nhóm</div><div class="stat-label">Danh mục chuyên biệt</div></div>
+    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Hỗ trợ cài đặt</div></div>
+  </div>
+</section>
+ 
+<!-- STEPS -->
+<section class="steps-section">
+  <div class="section-header">
+    <div class="section-tag">Cách mua hàng</div>
+    <h2>3 Bước Đơn Giản</h2>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <h3>Chọn sản phẩm</h3>
+      <p>Duyệt qua các App AI, chọn đúng nhóm và công cụ phù hợp với nhu cầu sáng tạo của bạn.</p>
     </div>
-    <div class="chat-messages" id="chat-messages">
-      <div class="chat-msg bot">
-        <div class="chat-msg-av">🤖</div>
-        <div class="chat-bubble">Xin chào! 👋 Mình là trợ lý AI của <strong>Cửa Hàng AI Mới Nhất</strong>.<br/><br/>Bạn cần tư vấn sản phẩm nào? Mình sẵn sàng giúp bạn chọn đúng công cụ AI phù hợp nhất! 🚀</div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <h3>Liên hệ Zalo tư vấn</h3>
+      <p>Nhắn tin Zalo <strong>0969258659</strong> để được tư vấn giá cả, gói phù hợp và thỏa thuận trước khi thanh toán.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <h3>Thanh toán & nhận hàng</h3>
+      <p>Quét mã QR chuyển khoản, sau đó được bàn giao và hướng dẫn cài đặt, sử dụng chi tiết.</p>
+    </div>
+  </div>
+</section>
+ 
+<div class="divider"><hr/></div>
+ 
+<!-- PRODUCTS -->
+<section class="products-section" id="pricing">
+  <div class="section-header">
+    <div class="section-tag">Sản phẩm</div>
+    <h2>🏮 Tất Cả App & Công Cụ AI</h2>
+    <p>Giá tham khảo — liên hệ Zalo để được tư vấn và báo giá chính xác</p>
+  </div>
+ 
+  <div class="filter-bar">
+    <div class="filter-tabs">
+      <button class="filter-tab active" onclick="filterProducts('all',this)">Tất cả</button>
+      <button class="filter-tab" onclick="filterProducts('prompt',this)">🎬 Tạo Prompt</button>
+      <button class="filter-tab" onclick="filterProducts('video',this)">🎥 AI Video</button>
+      <button class="filter-tab" onclick="filterProducts('photo',this)">🖼️ Photoshop</button>
+    </div>
+  </div>
+ 
+  <div class="product-grid" id="productGrid"></div>
+</section>
+ 
+<div class="divider"><hr/></div>
+ 
+<!-- QR PAYMENT -->
+<section class="qr-section" id="qr">
+  <div class="section-header">
+    <div class="section-tag">Thanh toán</div>
+    <h2>💳 Quét QR Chuyển Khoản</h2>
+    <p>Sau khi thỏa thuận giá với chủ shop qua Zalo, quét mã QR để thanh toán nhanh chóng</p>
+  </div>
+  <div class="qr-box">
+    <div class="qr-title">📱 Mã QR Thanh Toán</div>
+    <div class="qr-sub">Vui lòng liên hệ Zalo <strong style="color:var(--gold)">0969258659</strong> để thỏa thuận giá trước khi chuyển khoản.<br/>Ghi nội dung chuyển khoản đúng tên App đã mua.</div>
+
+    <!-- ĐẶT ẢNH QR CỦA BẠN VÀO ĐÂY -->
+    <!-- Cách 1: Nếu dùng trên máy tính cá nhân (mở file trực tiếp) -->
+    <!-- <div class="qr-placeholder" style="border:none;background:transparent;"><img src="ANHQRCODEOK.jpg" alt="Mã QR Thanh Toán" style="width:100%;height:100%;border-radius:14px;object-fit:cover;"/></div> -->
+
+    <!-- Cách 2: Placeholder hiển thị hướng dẫn -->
+    <div class="qr-placeholder">
+      <span>📷</span>
+      <div style="text-align:center">Đặt ảnh QR tại đây<br/><span style="font-size:.65rem;color:var(--text3)">Đổi tên file thành ANHQRCODEOK.jpg<br/>rồi để cùng thư mục với file HTML này</span></div>
+    </div>
+
+    <div class="qr-info">
+      <div class="qr-row"><span class="lbl">🏦 Ngân hàng</span><span class="val">— (Liên hệ để biết)</span></div>
+      <div class="qr-row"><span class="lbl">👤 Chủ tài khoản</span><span class="val">CÔNG HẢI</span></div>
+      <div class="qr-row"><span class="lbl">📞 Zalo xác nhận</span><span class="val">0969258659</span></div>
+      <div class="qr-row"><span class="lbl">📍 Địa chỉ</span><span class="val">TP. Lào Cai, Tỉnh Lào Cai</span></div>
+    </div>
+  </div>
+</section>
+ 
+<div class="divider"><hr/></div>
+ 
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-header">
+    <div class="section-tag">Hỗ trợ</div>
+    <h2>💬 Liên Hệ Chủ Shop</h2>
+    <p>Nhắn tin trực tiếp để được tư vấn, báo giá và hướng dẫn cài đặt chi tiết</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="contact-icon">💬</div>
+      <h3>Zalo Cá Nhân</h3>
+      <div class="sub">0969258659 — Công Hải</div>
+      <p>Kênh tư vấn nhanh nhất. Nhắn tin để hỏi giá, mua App và được hỗ trợ cài đặt.</p>
+      <a href="https://zalo.me/0969258659" class="contact-btn" target="_blank">NHẮN TIN ZALO NGAY</a>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">📞</div>
+      <h3>Gọi Điện</h3>
+      <div class="sub">0969258659</div>
+      <p>Phù hợp khi cần trao đổi nhanh hoặc xử lý vấn đề kỹ thuật khẩn cấp.</p>
+      <a href="tel:0969258659" class="contact-btn outline">GỌI NGAY</a>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">📍</div>
+      <h3>Địa Chỉ</h3>
+      <div class="sub">Thành Phố Lào Cai, Tỉnh Lào Cai</div>
+      <p>Chủ cửa hàng: <strong style="color:var(--gold)">Công Hải</strong><br/>Tư vấn và hỗ trợ cài đặt trực tiếp tại địa phương.</p>
+      <a href="#contact" class="contact-btn outline">XEM BẢN ĐỒ</a>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">🔧</div>
+      <h3>Hỗ Trợ Kỹ Thuật</h3>
+      <div class="sub">Cài đặt & sử dụng</div>
+      <p>Được hướng dẫn cài đặt, cấu hình và sử dụng chi tiết từng App sau khi mua hàng.</p>
+      <a href="https://zalo.me/0969258659" class="contact-btn" target="_blank">YÊU CẦU HỖ TRỢ</a>
+    </div>
+  </div>
+</section>
+ 
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">🏮 Cửa Hàng AI Mới Nhất</a>
+        <p>Cung cấp App AI tạo Prompt, công cụ render video chất lượng cao và Action Photoshop chuyên nghiệp. Chủ shop: <strong style="color:var(--gold)">Công Hải</strong> — TP. Lào Cai.</p>
+        <div class="footer-tags">
+          <span class="footer-tag">✅ Hỗ trợ cài đặt</span>
+          <span class="footer-tag">⚡ Tư vấn nhanh</span>
+          <span class="footer-tag">🔧 Hướng dẫn chi tiết</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>App AI</h4>
+        <ul>
+         <li><a href="#pricing">App Tạo Prompt</a></li>
+         <li><a href="#pricing">AI Render Video</a></li>
+         <li><a href="#pricing">Action Photoshop</a></li>
+         <li><a href="#pricing">Combo Deal</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Hỗ Trợ</h4>
+        <ul>
+         <li><a href="https://zalo.me/0969258659">Zalo: 0969258659</a></li>
+         <li><a href="tel:0969258659">Gọi điện trực tiếp</a></li>
+         <li><a href="#qr">Thanh toán QR</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Cam Kết</h4>
+        <ul>
+         <li><span>◆ Tư vấn trước khi mua</span></li>
+         <li><span>◆ Hướng dẫn cài đặt tận tâm</span></li>
+         <li><span>◆ Hỗ trợ kỹ thuật sau bán</span></li>
+         <li><span>◆ Giá thỏa thuận minh bạch</span></li>
+        </ul>
       </div>
     </div>
-    <div class="chat-quick-btns" id="chat-quick-btns">
-      <button class="chat-quick" onclick="sendQuick('Sản phẩm nào bán chạy nhất?')">🔥 Bán chạy</button>
-      <button class="chat-quick" onclick="sendQuick('Tôi muốn làm video AI, nên mua gì?')">🎥 Tư vấn video</button>
-      <button class="chat-quick" onclick="sendQuick('Giá cả như thế nào?')">💰 Xem giá</button>
-      <button class="chat-quick" onclick="sendQuick('Hỗ trợ sau khi mua không?')">🛎️ Hỗ trợ</button>
+    <div class="footer-bottom">© 2025 Cửa Hàng AI Mới Nhất — Chủ shop: Công Hải | TP. Lào Cai, Tỉnh Lào Cai | Zalo: 0969258659</div>
+  </div>
+</footer>
+ 
+<!-- CHAT WIDGET -->
+<div class="chat-widget">
+  <div class="chat-popup" id="chatPopup">
+    <div class="chat-head">
+      <div class="chat-avatar">🏮</div>
+      <div class="info">
+       <strong>Công Hải — AI Store</strong>
+       <span>Đang hoạt động</span>
+      </div>
+      <button class="chat-close" onclick="toggleChat()">✕</button>
+    </div>
+    <div class="chat-msgs" id="chatMsgs">
+      <div class="msg bot">Xin chào! 👋 Tôi là Công Hải, chủ cửa hàng AI tại Lào Cai. Bạn muốn hỏi về App nào?</div>
+      <div class="msg bot">Bạn có thể nhắn tin tại đây hoặc liên hệ trực tiếp qua Zalo <strong>0969258659</strong> để được tư vấn chi tiết nhé!</div>
+    </div>
+    <div class="chat-shortcuts">
+      <span class="shortcut" onclick="sendShortcut('Hỏi giá App Prompt')">Hỏi giá App Prompt</span>
+      <span class="shortcut" onclick="sendShortcut('App AI Video giá bao nhiêu?')">Hỏi giá AI Video</span>
+      <span class="shortcut" onclick="sendShortcut('Action Photoshop có những gì?')">Action Photoshop</span>
     </div>
     <div class="chat-input-row">
-      <textarea class="chat-input" id="chat-input" placeholder="Nhập tin nhắn..." rows="1"></textarea>
-      <button class="chat-send-btn" id="chat-send-btn">
-        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-      </button>
+      <input class="chat-input" id="chatInput" placeholder="Nhắn tin..." onkeydown="if(event.key==='Enter')sendMsg()"/>
+      <button class="chat-send" onclick="sendMsg()">➤</button>
     </div>
   </div>
+  <button class="chat-btn" onclick="toggleChat()" title="Chat với shop">💬</button>
+</div>
+ 
+<!-- FLOAT ZALO -->
+<button class="float-zalo" onclick="window.open('https://zalo.me/0969258659','_blank')">
+  💬 Zalo: 0969258659
+</button>
+ 
+<!-- NOTIF -->
+<div class="notif" id="notif">
+  <div class="notif-avatar">👤</div>
+  <div><strong id="notifName" style="color:var(--gold);display:block;font-size:.8rem"></strong><span id="notifMsg" style="color:var(--text2)"></span><br/><span id="notifTime" style="color:var(--text3);font-size:.7rem"></span></div>
+</div>
 
-  <!-- ─── CHAT WIDGET SCRIPT (plain JS, sau toàn bộ React app) ─── -->
-  <script>
-    (function() {
-      const SYSTEM_PROMPT = `Bạn là trợ lý AI thân thiện của "Cửa Hàng AI Mới Nhất" tại Lào Cai, do anh Công Hải quản lý. Bạn tư vấn sản phẩm AI cho khách hàng người Việt.
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div class="modal-icon" id="modalIcon">🤖</div>
+      <div>
+        <div class="modal-title" id="modalTitle">Chi tiết sản phẩm</div>
+        <div class="modal-sub" id="modalSub"></div>
+      </div>
+      <button class="modal-close" onclick="closeModalBtn()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-footer" id="modalFooter"></div>
+  </div>
+</div>
 
-Danh sách sản phẩm nổi bật:
-- App Tạo Prompt (99.000₫–249.000₫): Phụ đề Karaoke, Storyboard, SEO YouTube, Tạo Ảnh+Kịch Bản, Đồng Nhất Nhân Vật, Seedance 2.0, Poster, và nhiều hơn.
-- App Build Video AI (299.000₫–599.000₫): Veo 3 MAX, Kling 3.1, Sora 2.0, KIM BẤT HOÁN, VIÊN NGỌC VÔ GIÁ, Siêu AI (Omni+Seedance+Kling+Sora), RunWay Gen Kim Cương Đỏ, Seedance 2.0 Tốt Nhất.
-- Photoshop Actions (79.000₫–129.000₫): Sắc Nét+Mịn Da, Chỉnh Màu 1 Click, Sửa Da, Nâng Cấp Ảnh 4K, và nhiều hơn.
+<script>
+const products = [
+  // NHÓM I: App Tạo Prompt
+  {id:'p01',name:'Chèn phụ đề video, chữ chạy karaoke',icon:'🎬',tag:'App Tạo Prompt',cat:'prompt',hot:false,new:false,desc:'App chuyên dụng chèn phụ đề vào video, hiệu ứng chữ chạy karaoke cực đẹp, đồng bộ chính xác.',color:'linear-gradient(135deg,#667eea,#764ba2)',features:['Chèn phụ đề tự động','Hiệu ứng chữ chạy karaoke','Đồng bộ âm thanh','Xuất nhiều định dạng'],price:150000,oldPrice:250000},
+  {id:'p02',name:'Chèn phụ đề & lồng tiếng video trắng',icon:'🎙️',tag:'App Tạo Prompt',cat:'prompt',hot:false,new:false,desc:'Chèn phụ đề và lồng tiếng chuyên nghiệp cho video trắng (silent video), đa ngôn ngữ.',color:'linear-gradient(135deg,#f093fb,#f5576c)',features:['Lồng tiếng đa ngôn ngữ','Phụ đề tự động sync','Video trắng chuyên dụng','AI voice synthesis'],price:150000,oldPrice:250000},
+  {id:'p03',name:'Tạo ảnh Storyboard',icon:'🎨',tag:'App Tạo Prompt',cat:'prompt',hot:false,new:false,desc:'Tạo ảnh storyboard chuyên nghiệp từ kịch bản. Phân cảnh rõ ràng, dễ dùng cho AI video.',color:'linear-gradient(135deg,#43e97b,#38f9d7)',features:['Tạo storyboard từ script','Phân cảnh chi tiết','Xuất nhiều style ảnh','Tích hợp AI image gen'],price:150000,oldPrice:250000},
+  {id:'p04',name:'SEO kênh mới với tiêu đề bất kỳ',icon:'📈',tag:'App Tạo Prompt',cat:'prompt',hot:true,new:false,desc:'SEO một kênh mới với tiêu đề bất kỳ. Tối ưu tags, mô tả, thumbnail để tăng tương tác ngay từ đầu.',color:'linear-gradient(135deg,#fa709a,#fee140)',features:['Nghiên cứu từ khóa','Tối ưu tiêu đề & mô tả','Đề xuất tags','Chiến lược kênh mới'],price:150000,oldPrice:250000},
+  {id:'p05',name:'SEO video song ngữ Anh-Việt',icon:'🌐',tag:'App Tạo Prompt',cat:'prompt',hot:false,new:false,desc:'SEO chuyên biệt cho video song ngữ Anh-Việt. Tiếp cận khán giả hai thị trường cùng lúc.',color:'linear-gradient(135deg,#4facfe,#00f2fe)',features:['Tối ưu song ngữ','Keyword tiếng Anh & Việt','Phân tích đối thủ','Tăng reach quốc tế'],price:150000,oldPrice:250000},
+  {id:'p06',name:'Sao chép kênh đối thủ',icon:'🔍',tag:'App Tạo Prompt',cat:'prompt',hot:true,new:false,desc:'Phân tích và sao chép chiến lược của kênh đối thủ thành công. Học hỏi từ top kênh trong ngành.',color:'linear-gradient(135deg,#a18cd1,#fbc2eb)',features:['Phân tích kênh đối thủ','Sao chép cấu trúc nội dung','Chiến lược tương tự','Tự động hóa quy trình'],price:150000,oldPrice:250000},
+  {id:'p07',name:'Tạo Ảnh + Kịch Bản + Prompt',icon:'✍️',tag:'App Tạo Prompt',cat:'prompt',hot:true,new:false,desc:'Combo mạnh: tạo ảnh minh họa, viết kịch bản và sinh Prompt AI hoàn chỉnh trong một luồng.',color:'linear-gradient(135deg,#f5c842,#e8a820)',features:['Tạo ảnh minh họa','Viết kịch bản tự động','Sinh Prompt AI','Workflow hoàn chỉnh'],price:200000,oldPrice:350000},
+  {id:'p08',name:'X-Quang Ray',icon:'🔬',tag:'App Tạo Prompt',cat:'prompt',hot:false,new:true,desc:'App tạo nội dung chuyên đề X-quang, y khoa hình ảnh. Tạo prompt và ảnh chuyên ngành y tế.',color:'linear-gradient(135deg,#0f2027,#2c5364)',features:['Nội dung y khoa chuyên sâu','Prompt X-quang chính xác','Ảnh minh họa y tế','Phù hợp kênh sức khỏe'],price:150000,oldPrice:250000},
+  {id:'p09',name:'Vật lý rút gọn',icon:'⚛️',tag:'App Tạo Prompt',cat:'prompt',hot:false,new:false,desc:'Tạo nội dung giải thích vật lý theo dạng rút gọn, dễ hiểu. Phù hợp kênh giáo dục & khoa học.',color:'linear-gradient(135deg,#1a1a2e,#16213e)',features:['Giải thích vật lý đơn giản','Prompt nội dung giáo dục','Ảnh minh họa khoa học','Kịch bản ngắn gọn súc tích'],price:150000,oldPrice:250000},
+  {id:'p10',name:'Thumbnail + Tiêu đề video',icon:'🖼️',tag:'App Tạo Prompt',cat:'prompt',hot:true,new:false,desc:'Tạo thumbnail bắt mắt và tiêu đề video thu hút. Tối ưu CTR cho kênh YouTube, TikTok.',color:'linear-gradient(135deg,#e03c2f,#b52e24)',features:['Thumbnail viral','Tiêu đề A/B testing','Phân tích CTR','Đa nền tảng hỗ trợ'],price:150000,oldPrice:250000},
+  {id:'p11',name:'Thần thoại nổi tiếng quốc tế',icon:'🏛️',tag:'App Tạo Prompt',cat:'prompt',hot:false,new:false,desc:'Bộ Prompt tạo nội dung thần thoại nổi tiếng quốc tế chọn lọc. Câu chuyện thú vị, hình ảnh đẹp.',color:'linear-gradient(135deg,#8B4513,#D2691E)',features:['Thần thoại Hy Lạp, Norse, Á Đông','Kịch bản sinh động','Ảnh AI phong cách cổ điển','Phù hợp kênh lịch sử'],price:150000,oldPrice:250000},
+  {id:'p12',name:'Nghệ nhân',icon:'🎭',tag:'App Tạo Prompt',cat:'prompt',hot:false,new:false,desc:'Tạo nội dung tôn vinh nghệ nhân, làng nghề truyền thống. Phù hợp kênh văn hóa dân tộc.',color:'linear-gradient(135deg,#c94b4b,#4b134f)',features:['Nội dung làng nghề','Câu chuyện nghệ nhân','Ảnh phong cách dân tộc','Kịch bản cảm xúc'],price:150000,oldPrice:250000},
+  {id:'p13',name:'Hài POV',icon:'😄',tag:'App Tạo Prompt',cat:'prompt',hot:true,new:false,desc:'App tạo kịch bản hài hước theo góc nhìn POV (Point of View). Viral TikTok, Shorts cực dễ.',color:'linear-gradient(135deg,#f7971e,#ffd200)',features:['Kịch bản hài POV','Trending topic','Tự động viral hook','Ngắn gọn súc tích'],price:150000,oldPrice:250000},
+  {id:'p14',name:'Hài Y khoa',icon:'🏥',tag:'App Tạo Prompt',cat:'prompt',hot:false,new:false,desc:'Tạo nội dung hài hước về y khoa, sức khỏe. Vừa vui vẻ vừa giáo dục, phù hợp kênh sức khỏe.',color:'linear-gradient(135deg,#56ab2f,#a8e063)',features:['Hài y khoa sáng tạo','Nội dung giáo dục vui','Prompt ảnh y tế','Kịch bản nhiều dạng'],price:150000,oldPrice:250000},
+  {id:'p15',name:'Đồng nhất nhân vật',icon:'🧑‍🎨',tag:'App Tạo Prompt',cat:'prompt',hot:false,new:true,desc:'Giữ nhân vật nhất quán xuyên suốt nhiều cảnh, nhiều video. Giải quyết vấn đề face consistency.',color:'linear-gradient(135deg,#8e2de2,#4a00e0)',features:['Face consistency AI','Nhân vật xuyên suốt','Prompt seed cố định','Đồng nhất phong cách'],price:200000,oldPrice:350000},
+  {id:'p16',name:'Chuyên đề cứu hộ',icon:'🚑',tag:'App Tạo Prompt',cat:'prompt',hot:false,new:false,desc:'Tạo nội dung chuyên đề cứu hộ, cứu nạn. Kịch bản hành động, ảnh minh họa chuyên nghiệp.',color:'linear-gradient(135deg,#e43c00,#ff8c00)',features:['Kịch bản cứu hộ kịch tính','Ảnh minh họa cứu nạn','Prompt đa cảnh','Phù hợp kênh action'],price:150000,oldPrice:250000},
+  {id:'p17',name:'Tạo Poster',icon:'📌',tag:'App Tạo Prompt',cat:'prompt',hot:false,new:false,desc:'Tạo Poster quảng cáo, thông báo, sự kiện chuyên nghiệp với AI. Đa phong cách, đa mục đích.',color:'linear-gradient(135deg,#1e3c72,#2a5298)',features:['Poster đa phong cách','Tự động layout đẹp','Nhiều kích thước','Xuất chất lượng cao'],price:150000,oldPrice:250000},
+  {id:'p18',name:'Tạo Áp phích',icon:'📋',tag:'App Tạo Prompt',cat:'prompt',hot:false,new:false,desc:'Tạo Áp phích (billboard, banner) ngoài trời và online. Thiết kế bắt mắt, in ấn được ngay.',color:'linear-gradient(135deg,#642B73,#C6426E)',features:['Áp phích khổ lớn','Phù hợp in ấn ngoài trời','Prompt thiết kế chuyên sâu','Nhiều tỷ lệ khổ'],price:150000,oldPrice:250000},
+  {id:'p19',name:'Kịch bản chuyên cho Seedance 2.0',icon:'🎞️',tag:'App Tạo Prompt',cat:'prompt',hot:false,new:true,desc:'Tạo kịch bản chuyên biệt được tối ưu cho Seedance 2.0. Prompt đúng cú pháp, render đẹp nhất.',color:'linear-gradient(135deg,#134E5E,#71B280)',features:['Prompt chuẩn Seedance 2.0','Tối ưu cú pháp AI video','Kịch bản từng cảnh','Chất lượng render cao nhất'],price:200000,oldPrice:350000},
+  // NHÓM II: AI Video
+  {id:'v01',name:'Veo 3 MAX',icon:'🎥',tag:'AI Render Video',cat:'video',hot:true,new:true,desc:'Google Veo 3 MAX – AI render video đỉnh cao nhất hiện tại. Chất lượng điện ảnh, âm thanh tích hợp.',color:'linear-gradient(135deg,#1a73e8,#0052cc)',features:['Chất lượng điện ảnh 4K','Âm thanh tích hợp','Vật lý chuyển động thực tế','Hỗ trợ prompt tiếng Việt'],price:300000,oldPrice:500000},
+  {id:'v02',name:'Kling 3.1',icon:'🌀',tag:'AI Render Video',cat:'video',hot:true,new:true,desc:'Kling AI 3.1 mới nhất – chuyển động mượt mà, nhân vật nhất quán, video chất lượng cao.',color:'linear-gradient(135deg,#ff6b6b,#ee5a24)',features:['Kling 3.1 mới nhất','Chuyển động siêu mượt','Nhân vật nhất quán','Render nhanh'],price:250000,oldPrice:420000},
+  {id:'v03',name:'Sora 2.0',icon:'🌠',tag:'AI Render Video',cat:'video',hot:true,new:true,desc:'OpenAI Sora 2.0 – tạo video từ text và ảnh. Hiểu ngôn ngữ sâu, chất lượng cinematic.',color:'linear-gradient(135deg,#2d3436,#636e72)',features:['Text-to-video đỉnh cao','Image-to-video','Hiểu prompt phức tạp','Chất lượng cinematic'],price:280000,oldPrice:450000},
+  {id:'v04',name:'Storyboard 4 cảnh × 8 giây',icon:'🎬',tag:'AI Render Video',cat:'video',hot:false,new:false,desc:'Tạo video storyboard 4 cảnh, mỗi cảnh 8 giây. Hoàn chỉnh từ kịch bản đến video.',color:'linear-gradient(135deg,#f7971e,#ffd200)',features:['4 cảnh mỗi 8 giây','Storyboard hoàn chỉnh','Nhất quán phong cách','Kịch bản + render liền mạch'],price:300000,oldPrice:500000},
+  {id:'v05',name:'KIM BẤT HOÁN',icon:'👑',tag:'AI Render Video',cat:'video',hot:true,new:false,desc:'Tổng hợp các AI render video tốt nhất, lựa chọn tự động AI phù hợp nhất cho từng cảnh quay.',color:'linear-gradient(135deg,#f5c842,#e8a820)',features:['Tổng hợp đa AI platform','Tự động chọn AI tốt nhất','Chất lượng tối ưu mỗi cảnh','Siêu tiết kiệm chi phí'],price:400000,oldPrice:700000},
+  {id:'v06',name:'VIÊN NGỌC VÔ GIÁ',icon:'💎',tag:'AI Render Video',cat:'video',hot:true,new:false,desc:'Tổng hợp AI render video cao cấp nhất. Kết quả luôn xuất sắc, phù hợp dự án quan trọng.',color:'linear-gradient(135deg,#a8edea,#fed6e3)',features:['AI render cao cấp','Chất lượng không thể phàn nàn','Đầu ra điện ảnh','Phù hợp dự án premium'],price:450000,oldPrice:800000},
+  {id:'v07',name:'RunWay Gen Kim Cương Đỏ',icon:'🔴',tag:'AI Render Video',cat:'video',hot:false,new:false,desc:'RunWay Gen – tổng hợp AI render video cao cấp. Hiệu ứng đặc biệt, chuyển cảnh đẹp.',color:'linear-gradient(135deg,#c0392b,#8e44ad)',features:['RunWay Gen tích hợp','Hiệu ứng đặc biệt','Chuyển cảnh mượt','Tổng hợp AI chọn lọc'],price:350000,oldPrice:600000},
+  {id:'v08',name:'Tích hợp các AI Mới',icon:'🔄',tag:'AI Render Video',cat:'video',hot:false,new:true,desc:'Luôn cập nhật và tích hợp các AI video mới nhất vừa ra mắt. Trải nghiệm công nghệ trước mọi người.',color:'linear-gradient(135deg,#1e3c72,#2a5298)',features:['Cập nhật AI mới liên tục','Trải nghiệm sớm nhất','Đa nền tảng','Hỗ trợ tích hợp'],price:300000,oldPrice:500000},
+  {id:'v09',name:'Seedance 2.0 tốt nhất',icon:'🌱',tag:'AI Render Video',cat:'video',hot:true,new:true,desc:'Seedance 2.0 – AI render video tốt nhất hiện nay cho nội dung sáng tạo người Việt.',color:'linear-gradient(135deg,#134E5E,#71B280)',features:['Seedance 2.0 phiên bản mới nhất','Tốt nhất cho creator Việt','Prompt tiếng Việt chuẩn','Render cực nhanh'],price:280000,oldPrice:450000},
+  {id:'v10',name:'Siêu AI Tổng Hợp',icon:'🚀',tag:'AI Render Video',cat:'video',hot:true,new:true,desc:'Tổng hợp: Omni + Seedance + Kling + Sora và nhiều hơn nữa. Chất lượng video tốt nhất tuyệt đối.',color:'linear-gradient(135deg,#f5c842,#e03c2f)',features:['Omni + Seedance + Kling + Sora','Chất lượng tốt nhất tuyệt đối','Tự động tối ưu AI','Dành cho dự án đỉnh cao'],price:500000,oldPrice:900000},
+  // NHÓM III: Action Photoshop
+  {id:'a01',name:'Sắc nét ảnh + Mịn da',icon:'✨',tag:'Action Photoshop',cat:'photo',hot:true,new:false,desc:'Action 1-click: làm sắc nét ảnh đồng thời làm mịn da hoàn hảo. Kết quả chuyên nghiệp tức thì.',color:'linear-gradient(135deg,#f093fb,#f5576c)',features:['Sắc nét thông minh','Mịn da tự nhiên','1-click xử lý','Giữ chi tiết da'],price:80000,oldPrice:150000},
+  {id:'a02',name:'Chỉnh màu 1 click',icon:'🎨',tag:'Action Photoshop',cat:'photo',hot:true,new:false,desc:'Bộ Action chỉnh màu đa phong cách chỉ 1 click. Màu điện ảnh, vintage, tươi sáng, drama...',color:'linear-gradient(135deg,#43e97b,#38f9d7)',features:['Đa phong cách màu sắc','1-click chỉnh màu','Màu điện ảnh chuyên nghiệp','Tương thích mọi ảnh'],price:80000,oldPrice:150000},
+  {id:'a03',name:'Sửa các loại da bị lỗi',icon:'🩺',tag:'Action Photoshop',cat:'photo',hot:false,new:false,desc:'Action xử lý da bị lỗi: mụn, thâm, đốm nâu, bóng dầu, đỏ da. Phục hồi làn da hoàn hảo.',color:'linear-gradient(135deg,#fa709a,#fee140)',features:['Xóa mụn & thâm','Trị đốm nâu & đỏ da','Kiểm soát bóng dầu','Kết quả tự nhiên'],price:80000,oldPrice:150000},
+  {id:'a04',name:'Xóa bụi bẩn trên ảnh cũ',icon:'🗂️',tag:'Action Photoshop',cat:'photo',hot:false,new:false,desc:'Phục hồi ảnh cũ: xóa bụi bẩn, vết xước, ố vàng. Hồi sinh ảnh ký ức gia đình hoàn hảo.',color:'linear-gradient(135deg,#8e9eab,#eef2f3)',features:['Xóa bụi & vết xước','Khử ố vàng','Phục hồi màu sắc','Ảnh cũ như mới'],price:80000,oldPrice:150000},
+  {id:'a05',name:'Xóa lang ben',icon:'💊',tag:'Action Photoshop',cat:'photo',hot:false,new:false,desc:'Action chuyên xử lý lang ben, đốm trắng trên da. Tái tạo màu da đồng đều tự nhiên.',color:'linear-gradient(135deg,#56ab2f,#a8e063)',features:['Xóa lang ben hiệu quả','Tái tạo màu da','Kết quả tự nhiên','Dễ sử dụng'],price:80000,oldPrice:150000},
+  {id:'a06',name:'Nâng cấp Ảnh lên 4K',icon:'🔭',tag:'Action Photoshop',cat:'photo',hot:true,new:false,desc:'Nâng cấp độ phân giải ảnh lên 4K siêu nét. Giữ nguyên chi tiết, tăng gấp 4 lần chất lượng.',color:'linear-gradient(135deg,#1a1a2e,#16213e)',features:['Upscale lên 4K','Giữ chi tiết sắc nét','AI-powered upscaling','Không mờ hay nhiễu'],price:100000,oldPrice:180000},
+];
 
-Liên hệ mua hàng: Zalo 0969.258.659 (anh Công Hải).
+let filtered=[...products];
+function fmt(n){return n.toLocaleString('vi-VN')+'₫'}
 
-Hướng dẫn:
-- Ngắn gọn, thân thiện, dùng emoji hợp lý
-- Tư vấn đúng nhu cầu khách
-- Khuyến khích liên hệ Zalo để mua hàng và được hỗ trợ chi tiết
-- Trả lời bằng tiếng Việt`;
+function renderProducts(list){
+  const grid=document.getElementById('productGrid');
+  grid.innerHTML=list.map(p=>`
+    <div class="product-card${p.hot?' hot':''}${p.new?' new':''}" onclick="openModal('${p.id}')">
+      <div class="product-header">
+        <div class="product-icon" style="background:${p.color}">${p.icon}</div>
+        <div><div class="product-name">${p.name}</div><span class="product-tag">${p.tag}</span></div>
+      </div>
+      <div class="product-body">
+        <p class="product-desc">${p.desc}</p>
+        <div class="product-features">${p.features.map(f=>`<div class="feature">${f}</div>`).join('')}</div>
+      </div>
+      <div class="product-footer">
+        <div><div class="price-old">${fmt(p.oldPrice)}</div><div class="price-new">${fmt(p.price)}</div><div class="price-period">Giá tham khảo</div></div>
+        <button class="buy-btn">Hỏi mua →</button>
+      </div>
+    </div>`).join('');
+}
 
-      let chatHistory = [];
-      let isTyping = false;
+function filterProducts(cat,el){
+  document.querySelectorAll('.filter-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  filtered=cat==='all'?[...products]:products.filter(p=>p.cat===cat);
+  renderProducts(filtered);
+}
 
-      var fabBtn = document.getElementById('chat-fab-btn');
-      var chatWindow = document.getElementById('chat-window');
-      var closeBtn = document.getElementById('chat-win-close');
-      var messagesEl = document.getElementById('chat-messages');
-      var inputEl = document.getElementById('chat-input');
-      var sendBtn = document.getElementById('chat-send-btn');
+let currentProduct=null;
+function openModal(id){
+  currentProduct=products.find(p=>p.id===id);
+  document.getElementById('modalIcon').textContent=currentProduct.icon;
+  document.getElementById('modalTitle').textContent=currentProduct.name;
+  document.getElementById('modalSub').textContent=currentProduct.tag;
+  document.getElementById('modalBody').innerHTML=`
+    <div style="background:var(--dark3);border-radius:10px;padding:14px;margin-bottom:16px;border:1px solid var(--border)">
+      <div style="font-size:.82rem;color:var(--text2);line-height:1.65;margin-bottom:12px">${currentProduct.desc}</div>
+      <div style="display:flex;flex-direction:column;gap:6px">${currentProduct.features.map(f=>`<div class="feature">${f}</div>`).join('')}</div>
+    </div>
+    <div style="background:var(--dark3);border-radius:10px;padding:13px;border:1px solid var(--border);margin-bottom:14px">
+      <div class="order-row"><span>💰 Giá tham khảo</span><span style="color:var(--gold);font-weight:900;font-family:'Baloo 2',cursive">${fmt(currentProduct.price)}</span></div>
+      <div class="order-row"><span>📝 Giá gốc</span><span style="text-decoration:line-through;color:var(--text3)">${fmt(currentProduct.oldPrice)}</span></div>
+    </div>
+    <div style="background:rgba(245,200,66,.07);border:1px solid var(--border2);border-radius:10px;padding:13px;font-size:.8rem;color:var(--text2);line-height:1.6">
+      ⚠️ <strong style="color:var(--gold)">Lưu ý:</strong> Đây là giá tham khảo. Vui lòng liên hệ Zalo <strong style="color:var(--gold)">0969258659</strong> (Công Hải) để được tư vấn giá chính xác và hướng dẫn cài đặt trước khi thanh toán.
+    </div>`;
+  document.getElementById('modalFooter').innerHTML=`
+    <a href="https://zalo.me/0969258659" target="_blank" class="full-btn" style="display:block;text-align:center;text-decoration:none;margin-bottom:8px">💬 Liên hệ Zalo để mua</a>
+    <button onclick="closeModalBtn()" class="back-btn">Đóng</button>`;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+function closeModalBtn(){document.getElementById('modalOverlay').classList.remove('open')}
+function closeModal(e){if(e.target===document.getElementById('modalOverlay'))closeModalBtn()}
 
-      fabBtn.addEventListener('click', function() {
-        chatWindow.classList.toggle('hidden');
-        if (!chatWindow.classList.contains('hidden')) inputEl.focus();
-      });
-      closeBtn.addEventListener('click', function() { chatWindow.classList.add('hidden'); });
+// CHAT
+let chatOpen=false;
+const botReplies=[
+  'Bạn hỏi về App nào vậy? Tôi sẽ tư vấn chi tiết nhé! 😊',
+  'Giá cả thỏa thuận qua Zalo nhé bạn. Nhắn tin trực tiếp cho tôi qua Zalo 0969258659!',
+  'Tôi sẽ hỗ trợ cài đặt và hướng dẫn sử dụng chi tiết sau khi bạn mua. Yên tâm nhé!',
+  'App này đang rất được ưa chuộng đó. Bạn có muốn tôi giải thích thêm không?',
+  'Cảm ơn bạn đã quan tâm! Liên hệ Zalo 0969258659 để chốt giá tốt nhé 🔥',
+];
+let replyIdx=0;
+function toggleChat(){
+  chatOpen=!chatOpen;
+  const popup=document.getElementById('chatPopup');
+  if(chatOpen)popup.classList.add('open');
+  else popup.classList.remove('open');
+}
+function sendMsg(){
+  const input=document.getElementById('chatInput');
+  const text=input.value.trim();
+  if(!text)return;
+  addMsg(text,'user');input.value='';
+  setTimeout(()=>addMsg(botReplies[replyIdx%botReplies.length],'bot'),800);replyIdx++;
+}
+function sendShortcut(text){
+  addMsg(text,'user');
+  setTimeout(()=>addMsg(botReplies[replyIdx%botReplies.length],'bot'),700);replyIdx++;
+}
+function addMsg(text,type){
+  const msgs=document.getElementById('chatMsgs');
+  const div=document.createElement('div');
+  div.className=`msg ${type}`;div.innerHTML=text;msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
+}
 
-      function appendMsg(role, html) {
-        var isUser = role === 'user';
-        var div = document.createElement('div');
-        div.className = 'chat-msg ' + (isUser ? 'user' : 'bot');
-        div.innerHTML = (!isUser ? '<div class="chat-msg-av">🤖</div>' : '') +
-          '<div class="chat-bubble">' + html + '</div>' +
-          (isUser ? '<div class="chat-msg-av" style="background:linear-gradient(135deg,#f472b6,#7c6af7)">👤</div>' : '');
-        messagesEl.appendChild(div);
-        messagesEl.scrollTop = messagesEl.scrollHeight;
-      }
+// NOTIF
+const notifData=[
+  {name:'Minh Tuấn',msg:' vừa hỏi mua App <strong>Veo 3 MAX</strong>',time:'2 phút trước'},
+  {name:'Hải Đăng',msg:' vừa mua <strong>Tạo Ảnh + Kịch Bản</strong>',time:'5 phút trước'},
+  {name:'Thu Hà',msg:' vừa mua <strong>Seedance 2.0</strong>',time:'8 phút trước'},
+  {name:'Văn Nam',msg:' vừa hỏi giá <strong>Siêu AI Tổng Hợp</strong>',time:'11 phút trước'},
+  {name:'Quỳnh Anh',msg:' vừa mua <strong>Action Photoshop 4K</strong>',time:'15 phút trước'},
+  {name:'Bảo Long',msg:' vừa mua <strong>Kling 3.1</strong>',time:'20 phút trước'},
+];
+let ni=0;
+function showNotif(){
+  const n=notifData[ni%notifData.length];
+  document.getElementById('notifName').textContent=n.name;
+  document.getElementById('notifMsg').innerHTML=n.msg;
+  document.getElementById('notifTime').textContent=n.time;
+  const el=document.getElementById('notif');
+  el.style.display='flex';
+  setTimeout(()=>el.style.display='none',4500);ni++;
+}
+setTimeout(()=>{showNotif();setInterval(showNotif,9000)},4000);
 
-      function showTyping() {
-        var div = document.createElement('div');
-        div.className = 'chat-msg bot';
-        div.id = 'chat-typing-ind';
-        div.innerHTML = '<div class="chat-msg-av">🤖</div><div class="chat-bubble chat-typing"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
-        messagesEl.appendChild(div);
-        messagesEl.scrollTop = messagesEl.scrollHeight;
-      }
-
-      function hideTyping() {
-        var el = document.getElementById('chat-typing-ind');
-        if (el) el.remove();
-      }
-
-      async function sendMsg(text) {
-        if (!text.trim() || isTyping) return;
-        isTyping = true;
-        sendBtn.disabled = true;
-        document.getElementById('chat-quick-btns').style.display = 'none';
-        appendMsg('user', text.replace(/</g,'&lt;').replace(/>/g,'&gt;'));
-        chatHistory.push({ role: 'user', content: text });
-        showTyping();
-        try {
-          var res = await fetch('https://api.anthropic.com/v1/messages', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              model: 'claude-sonnet-4-20250514',
-              max_tokens: 1000,
-              system: SYSTEM_PROMPT,
-              messages: chatHistory
-            })
-          });
-          var data = await res.json();
-          var reply = (data.content || []).map(function(b){ return b.text || ''; }).join('') || 'Xin lỗi, mình gặp sự cố. Vui lòng thử lại!';
-          hideTyping();
-          chatHistory.push({ role: 'assistant', content: reply });
-          var formatted = reply.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br/>');
-          appendMsg('bot', formatted);
-        } catch(e) {
-          hideTyping();
-          appendMsg('bot', '⚠️ Lỗi kết nối. Bạn vui lòng nhắn Zalo <strong>0969.258.659</strong> để được hỗ trợ ngay nhé!');
-        }
-        isTyping = false;
-        sendBtn.disabled = false;
-        inputEl.focus();
-      }
-
-      window.sendQuick = function(msg) { sendMsg(msg); };
-
-      sendBtn.addEventListener('click', function() {
-        var val = inputEl.value; inputEl.value = ''; inputEl.style.height = 'auto';
-        sendMsg(val);
-      });
-
-      inputEl.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' && !e.shiftKey) {
-          e.preventDefault();
-          var val = inputEl.value; inputEl.value = ''; inputEl.style.height = 'auto';
-          sendMsg(val);
-        }
-      });
-
-      inputEl.addEventListener('input', function() {
-        inputEl.style.height = 'auto';
-        inputEl.style.height = Math.min(inputEl.scrollHeight, 80) + 'px';
-      });
-    })();
-  </script>
-
+renderProducts(products);
+</script>
 </body>
 </html>
+
+
