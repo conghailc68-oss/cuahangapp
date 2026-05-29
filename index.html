@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI ARTIFACTS - Cửa Hàng AI Công Hải</title>
+  <title>AI ARTIFACTS - Robo Made AI Factory Stories</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -36,7 +36,7 @@
       border: 1px solid rgba(255,255,255,0.10);
     }
     .rim-light { box-shadow: inset 0 1px 1px 0 rgba(255,255,255,0.2); }
-
+ 
     /* HEADER */
     header {
       position: fixed; top: 0; width: 100%; z-index: 50;
@@ -69,10 +69,10 @@
       color: var(--primary); transition: background .2s;
     }
     .icon-btn:hover { background: rgba(255,255,255,0.05); }
-
+ 
     /* MAIN */
     main { padding-top: 5rem; padding-bottom: 2rem; }
-
+ 
     /* HERO */
     .hero {
       margin-top: 1.5rem; margin-bottom: 3rem;
@@ -82,7 +82,7 @@
     .hero h2 { font-family: 'Sora', sans-serif; font-size: 1.5rem; font-weight: 600; color: var(--primary); margin-bottom: 0.5rem; }
     .hero p { color: var(--on-surface-variant); font-size: 1rem; }
     @media(min-width:768px){ .hero h2 { font-size: 1.875rem; } .hero { margin-top: 3.5rem; } }
-
+ 
     /* SECTION */
     .sec { margin-bottom: 4rem; max-width: 80rem; margin-left: auto; margin-right: auto; padding: 0 1rem; }
     .section-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; }
@@ -92,12 +92,12 @@
       text-transform: uppercase; letter-spacing: .07em; color: var(--on-surface);
     }
     @media(min-width:768px){ .section-header h3 { font-size: 1.25rem; } }
-
-    /* ═══ VIDEO SECTION ═══ */
+ 
+    /* VIDEO SECTION */
     .video-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
     @media(min-width:640px){ .video-grid { grid-template-columns: 1fr 1fr; } }
     @media(min-width:1024px){ .video-grid { grid-template-columns: repeat(3, 1fr); } }
-
+ 
     .video-card {
       border-radius: 1rem; overflow: hidden;
       border: 1px solid rgba(255,255,255,0.10);
@@ -105,7 +105,7 @@
       transition: transform .25s, box-shadow .25s;
     }
     .video-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.4); }
-
+ 
     .vc-img { position: relative; height: 10rem; overflow: hidden; flex-shrink: 0; }
     .vc-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
     .video-card:hover .vc-img img { transform: scale(1.07); }
@@ -121,9 +121,9 @@
     }
     .badge-purple { background: rgba(225,0,255,0.2); border: 1px solid var(--video-accent); color: var(--video-accent); }
     .badge-gold   { background: rgba(255,215,0,0.2);  border: 1px solid var(--prompt-gold);  color: var(--prompt-gold); }
-    .badge-blue   { background: rgba(169,199,255,0.2);border: 1px solid var(--primary);      color: var(--primary); }
-    .badge-green  { background: rgba(0,255,171,0.2);  border: 1px solid var(--success-green);color: var(--success-green); }
-
+    .badge-blue   { background: rgba(169,199,255,0.2); border: 1px solid var(--primary);      color: var(--primary); }
+    .badge-green  { background: rgba(0,255,171,0.2);  border: 1px solid var(--success-green); color: var(--success-green); }
+ 
     .vc-body { padding: 1rem; display: flex; flex-direction: column; flex: 1; }
     .vc-body h4 { font-family: 'Sora', sans-serif; font-size: 0.9rem; color: var(--primary); font-weight: 600; margin-bottom: 0.35rem; line-height: 1.4; }
     .vc-body p  { color: var(--on-surface-variant); font-size: 0.78rem; line-height: 1.55; flex: 1; }
@@ -140,12 +140,12 @@
     }
     .zalo-btn:hover { opacity: .85; }
     .zalo-btn svg { width: 15px; height: 15px; }
-
-    /* ═══ PROMPT SECTION ═══ */
+ 
+    /* PROMPT SECTION */
     .prompt-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
     @media(min-width:640px){ .prompt-grid { grid-template-columns: 1fr 1fr; } }
-    @media(min-width:1024px){ .prompt-grid { grid-template-columns: 1fr 1fr 1fr; } }
-
+    @media(min-width:1024px){ .prompt-grid { grid-template-columns: repeat(3, 1fr); } }
+ 
     .prompt-card {
       display: flex; padding: 0.85rem 1rem; border-radius: 0.75rem; gap: 0.75rem;
       align-items: center; cursor: pointer;
@@ -160,68 +160,7 @@
     }
     .prompt-card h5 { font-size: 0.82rem; font-weight: 600; color: var(--on-surface); line-height: 1.4; flex: 1; }
     .chevron { width: 1rem; height: 1rem; color: rgba(192,198,214,0.4); flex-shrink: 0; }
-
-    /* ═══ ACTION SECTION ═══ */
-    .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
-    @media(min-width:768px){ .action-grid { grid-template-columns: repeat(3, 1fr); } }
-    @media(min-width:1024px){ .action-grid { grid-template-columns: repeat(6, 1fr); } }
-
-    .action-card {
-      padding: 1.1rem; border-radius: 0.75rem;
-      border: 1px solid rgba(255,255,255,0.09);
-      border-left: 3px solid var(--success-green);
-      transition: background .2s, transform .2s; cursor: default;
-      display: flex; flex-direction: column; gap: 0.5rem;
-    }
-    .action-card:hover { background: rgba(0,255,171,0.06); transform: translateY(-2px); }
-    .action-card svg { color: var(--success-green); width: 1.35rem; height: 1.35rem; }
-    .action-card h5 { font-size: 0.8rem; font-weight: 600; color: var(--on-surface); line-height: 1.35; }
-    .action-card p  { font-size: 0.7rem; color: var(--on-surface-variant); }
-
-    /* ═══ PAYMENT SECTION ═══ */
-    .payment-wrap {
-      border-radius: 1.5rem; padding: 1.5rem;
-      border: 1px dashed rgba(169,199,255,0.30);
-    }
-    @media(min-width:768px){ .payment-wrap { padding: 2rem; } }
-    .payment-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 2rem; color: var(--primary); }
-    .payment-header svg { width: 1.75rem; height: 1.75rem; flex-shrink: 0; }
-    .payment-header h3 { font-family: 'Sora', sans-serif; font-size: 1.2rem; font-weight: 600; }
-    .payment-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
-    @media(min-width:768px){ .payment-grid { grid-template-columns: 1fr 1fr; } }
-    .payment-steps { display: flex; flex-direction: column; gap: 1.5rem; }
-    .payment-step { display: flex; gap: 1rem; }
-    .step-num {
-      width: 2rem; height: 2rem; border-radius: 50%;
-      background: rgba(169,199,255,0.2); color: var(--primary);
-      font-weight: 700; display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; font-size: 0.875rem;
-    }
-    .step-text { color: var(--on-surface-variant); font-size: 0.875rem; line-height: 1.6; padding-top: 0.25rem; }
-    .qr-wrap { display: flex; justify-content: center; }
-    @media(min-width:768px){ .qr-wrap { justify-content: flex-end; } }
-    .qr-inner {
-      background: #fff; padding: 0.75rem; border-radius: 1rem;
-      width: 12rem; height: 12rem; filter: brightness(.9) contrast(1.25);
-      box-shadow: 0 0 30px rgba(169,199,255,0.15);
-    }
-    @media(min-width:768px){ .qr-inner { width: 14rem; height: 14rem; } }
-    .qr-inner img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
-
-    /* FOOTER */
-    footer {
-      background: rgba(10,10,11,0.80); backdrop-filter: blur(12px);
-      border-top: 1px solid rgba(255,255,255,0.05);
-      padding: 3rem 1rem 11rem;
-      display: flex; flex-direction: column; align-items: center; gap: 1.5rem; text-align: center;
-    }
-    @media(min-width:768px){ footer { padding-bottom: 3rem; } }
-    footer h4 { font-family: 'Sora', sans-serif; color: var(--primary); font-weight: 700; letter-spacing: .08em; }
-    footer .copy { font-size: 0.75rem; color: rgba(192,198,214,0.6); }
-    footer .links { display: flex; gap: 1.5rem; padding-top: 0.5rem; flex-wrap: wrap; justify-content: center; }
-    footer .links a { color: rgba(192,198,214,0.6); font-size: 0.75rem; text-decoration: underline; text-underline-offset: 4px; transition: color .2s; }
-    footer .links a:hover { color: var(--primary); }
-
+ 
     /* BOTTOM NAV */
     .bottom-nav {
       position: fixed; bottom: 0; width: 100%; z-index: 50;
@@ -243,40 +182,21 @@
     .bottom-btn span { font-size: 0.625rem; font-weight: 500; letter-spacing: .04em; }
     .bottom-btn.active { background: rgba(169,199,255,0.1); color: var(--primary); }
     .bottom-btn.active svg { fill: currentColor; }
-
-    /* FAB */
-    .fab {
-      position: fixed; right: 1rem; bottom: 9rem; z-index: 60;
-      display: flex; flex-direction: column; align-items: flex-end; gap: 0.75rem;
-      pointer-events: none;
+ 
+    /* FOOTER */
+    footer {
+      background: rgba(10,10,11,0.80); backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 3rem 1rem 6rem;
+      display: flex; flex-direction: column; align-items: center; gap: 1.5rem; text-align: center;
     }
-    @media(min-width:768px){ .fab { bottom: 2rem; right: 2rem; } }
-    .fab-tooltip {
-      background: rgba(255,255,255,0.05); backdrop-filter: blur(20px);
-      border: 1px solid rgba(169,199,255,0.30);
-      padding: 0.5rem 1rem; border-radius: 9999px;
-      color: var(--primary); font-size: 0.875rem; font-weight: 700;
-      opacity: 0; transition: opacity .3s; pointer-events: none;
-    }
-    .fab-btn {
-      pointer-events: auto; width: 4rem; height: 4rem; border-radius: 50%;
-      background: rgba(255,255,255,0.05); backdrop-filter: blur(20px);
-      border: 1px solid rgba(169,199,255,0.40);
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; box-shadow: 0 0 20px rgba(169,199,255,0.4);
-      transition: transform .2s; overflow: hidden; position: relative;
-    }
-    .fab-btn::before { content: ''; position: absolute; inset: 0; background: rgba(169,199,255,0.10); transition: background .2s; }
-    .fab-btn:hover { transform: scale(1.05); }
-    .fab-btn:hover::before { background: rgba(169,199,255,0.20); }
-    .fab-btn:active { transform: scale(0.95); }
-    .fab-btn img { width: 2rem; height: 2rem; position: relative; z-index: 1; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4)); }
-    .fab:hover .fab-tooltip { opacity: 1; }
+    @media(min-width:768px){ footer { padding-bottom: 3rem; } }
+    footer h4 { font-family: 'Sora', sans-serif; color: var(--primary); font-weight: 700; letter-spacing: .08em; }
+    footer .copy { font-size: 0.75rem; color: rgba(192,198,214,0.6); }
 
     svg { display: inline-block; vertical-align: middle; }
     html { scroll-behavior: smooth; }
-
-    /* No-image placeholder */
+ 
     .img-placeholder {
       width: 100%; height: 100%;
       display: flex; align-items: center; justify-content: center;
@@ -287,29 +207,20 @@
   </style>
 </head>
 <body>
-
-<!-- HEADER -->
+ 
 <header>
   <div class="header-logo">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="var(--primary)" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
     <h1 class="font-sora">AI ARTIFACTS</h1>
   </div>
   <nav class="header-nav">
-    <button class="nav-btn active" onclick="scrollTo('section-prompt')">
+    <button class="nav-btn active" onclick="document.getElementById('section-prompt').scrollIntoView();">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-      <span>Market</span>
-    </button>
-    <button class="nav-btn" onclick="scrollTo('section-prompt')">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
       <span>Prompts</span>
     </button>
-    <button class="nav-btn" onclick="scrollTo('section-video')">
+    <button class="nav-btn" onclick="document.getElementById('section-video').scrollIntoView();">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1z"/></svg>
       <span>Video</span>
-    </button>
-    <button class="nav-btn" onclick="scrollTo('section-support')">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-      <span>Support</span>
     </button>
   </nav>
   <div class="header-search">
@@ -318,456 +229,100 @@
     </button>
   </div>
 </header>
-
+ 
 <main>
-
-<!-- HERO -->
-<div class="hero" style="margin-top:1.5rem;margin-bottom:3rem;">
-  <h2 class="font-sora">Artifacts Collection</h2>
-  <p>Công cụ AI độc bản, tối ưu hóa quy trình sáng tạo chuyên nghiệp.</p>
+ 
+<div class="hero">
+  <h2 class="font-sora">Robo Made AI Factory Stories</h2>
+  <p>Giải pháp AI sản xuất phim tài liệu nhà máy, quy trình công nghiệp và tự động hóa chất lượng điện ảnh đỉnh cao.</p>
 </div>
-
-<!-- ═══════════════════════════════════════════
-     I. APP TẠO PROMPT & ỨNG DỤNG KHÁC
-════════════════════════════════════════════ -->
+ 
 <div class="sec" id="section-prompt">
   <div class="section-header">
     <span class="section-bar" style="background:var(--prompt-gold);"></span>
-    <h3 class="font-sora">App TẠO Prompt &amp; Ứng Dụng Khác</h3>
+    <h3 class="font-sora">App Tạo Prompt & Kịch Bản Nhà Máy</h3>
   </div>
-
+ 
   <div class="prompt-grid">
-
     <div class="glass-card prompt-card">
       <div class="prompt-num">01</div>
-      <h5>Chèn phụ đề video, chữ chạy Karaoke</h5>
+      <h5>Kịch bản quy trình sản xuất nông sản (Thanh long, Bưởi...)</h5>
       <svg class="chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
     </div>
-
+ 
     <div class="glass-card prompt-card">
       <div class="prompt-num">02</div>
-      <h5>Chèn phụ đề &amp; lồng tiếng cho video trắng</h5>
+      <h5>Kịch bản dây chuyền chế tạo kính thông minh (Smart Glass)</h5>
       <svg class="chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
     </div>
-
+ 
     <div class="glass-card prompt-card">
       <div class="prompt-num">03</div>
-      <h5>Tạo ảnh Storyboard</h5>
+      <h5>Tạo ảnh Storyboard chi tiết 28 phân cảnh</h5>
       <svg class="chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
     </div>
-
+ 
     <div class="glass-card prompt-card">
       <div class="prompt-num">04</div>
-      <h5>SEO kênh mới với tiêu đề bất kỳ</h5>
+      <h5>SEO tối ưu tiêu đề & mô tả cho thị trường Hoa Kỳ (US Market)</h5>
       <svg class="chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
     </div>
-
+ 
     <div class="glass-card prompt-card">
       <div class="prompt-num">05</div>
-      <h5>SEO video song ngữ Anh–Việt</h5>
+      <h5>SEO Video công nghiệp song ngữ Anh–Việt</h5>
       <svg class="chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
     </div>
-
+ 
     <div class="glass-card prompt-card">
       <div class="prompt-num">06</div>
-      <h5>Sao chép kênh đối thủ</h5>
+      <h5>Phân tích xu hướng kênh đối thủ cùng chủ đề</h5>
       <svg class="chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
     </div>
-
-    <div class="glass-card prompt-card">
-      <div class="prompt-num">07</div>
-      <h5>Tạo Ảnh + Kịch Bản + Prompt</h5>
-      <svg class="chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-    </div>
-
-    <div class="glass-card prompt-card">
-      <div class="prompt-num">08</div>
-      <h5>X-Quang Ray</h5>
-      <svg class="chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-    </div>
-
-    <div class="glass-card prompt-card">
-      <div class="prompt-num">09</div>
-      <h5>Vật lý rút gọn</h5>
-      <svg class="chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-    </div>
-
-    <div class="glass-card prompt-card">
-      <div class="prompt-num">10</div>
-      <h5>Thumbnail + Tiêu đề video</h5>
-      <svg class="chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-    </div>
-
-    <div class="glass-card prompt-card">
-      <div class="prompt-num">11</div>
-      <h5>Thần thoại nổi tiếng quốc tế chọn lọc</h5>
-      <svg class="chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-    </div>
-
-    <div class="glass-card prompt-card">
-      <div class="prompt-num">12</div>
-      <h5>Nghệ nhân</h5>
-      <svg class="chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-    </div>
-
-    <div class="glass-card prompt-card">
-      <div class="prompt-num">13</div>
-      <h5>Hài POV</h5>
-      <svg class="chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-    </div>
-
-    <div class="glass-card prompt-card">
-      <div class="prompt-num">14</div>
-      <h5>Hài Y khoa</h5>
-      <svg class="chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-    </div>
-
-    <div class="glass-card prompt-card">
-      <div class="prompt-num">15</div>
-      <h5>Đồng nhất nhân vật</h5>
-      <svg class="chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-    </div>
-
-    <div class="glass-card prompt-card">
-      <div class="prompt-num">16</div>
-      <h5>Chuyên đề cứu hộ</h5>
-      <svg class="chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-    </div>
-
-    <div class="glass-card prompt-card">
-      <div class="prompt-num">17</div>
-      <h5>Tạo Poster</h5>
-      <svg class="chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-    </div>
-
-    <div class="glass-card prompt-card">
-      <div class="prompt-num">18</div>
-      <h5>Tạo Áp phích</h5>
-      <svg class="chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-    </div>
-
-    <div class="glass-card prompt-card">
-      <div class="prompt-num">19</div>
-      <h5>Tạo Kịch bản chuyên cho Seedance 2.0</h5>
-      <svg class="chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-    </div>
-
   </div>
 </div>
-
-<!-- ═══════════════════════════════════════════
-     II. APP BUILD TẠO VIDEO
-════════════════════════════════════════════ -->
+ 
 <div class="sec" id="section-video">
   <div class="section-header">
     <span class="section-bar" style="background:var(--video-accent);"></span>
-    <h3 class="font-sora">App Build TẠO VIDEO CHẤT LƯỢNG CAO</h3>
+    <h3 class="font-sora">App Build Video Nhà Máy Chất Lượng Cao</h3>
   </div>
-
+ 
   <div class="video-grid">
-
-    <!-- Veo 3 MAX -->
     <div class="glass-card rim-light video-card">
       <div class="vc-img" style="background:linear-gradient(135deg,#0d1b2a,#1a3a5c);">
-        <div class="img-placeholder">✦ Veo 3 MAX</div>
+        <div class="img-placeholder">✦ VEO 3.1 MAX</div>
         <div class="vc-overlay"></div>
-        <div class="vc-badge"><span class="badge badge-blue">MAX QUALITY</span></div>
+        <div class="vc-badge"><span class="badge badge-blue">8K CINEMATIC</span></div>
       </div>
       <div class="vc-body">
-        <h4 class="font-sora">Veo 3 MAX</h4>
-        <p>Công nghệ render video AI thế hệ mới, chất lượng điện ảnh đỉnh cao từ Google DeepMind.</p>
+        <h4 class="font-sora">VEO 3.1 MAX</h4>
+        <p>Mô phỏng góc máy flycam siêu cận trong nhà xưởng, chi tiết cơ khí chân thực chuẩn 8K.</p>
         <div class="vc-footer">
-          <div><span class="price-label">Giá tham khảo</span><span class="price-value font-sora">Liên hệ</span></div>
-          <button class="zalo-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Zalo</button>
+          <div><span class="price-label">Giá cấu hình</span><span class="price-value font-sora">Liên hệ</span></div>
+          <button class="zalo-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Zalo</button>
         </div>
       </div>
     </div>
-
-    <!-- Kling 3.1 -->
+ 
     <div class="glass-card rim-light video-card">
       <div class="vc-img" style="background:linear-gradient(135deg,#1a0a2e,#3d1a6e);">
-        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5TAE8iAiqslaYsZl2BRMy2R_0Q4oQCMo7Hs1JIwqsZG4iKNB-n0RIl1zChmQ7G_9lm7---mnEx-FymisvuiseNslhJ3u5WC73RGwhz43TdyFG8IBGe1zJg6Ha9CPwXNE-MYS7c-7noLOS4yu9e2P-K0T2bJuZb2DgiPm1K-2ba6Ka8sjmLT5-OGK5ng82BRkaacRes7pGQQSLGTUNOtqxFKdMDyMFN0upTtXDXp7CHuPH4zf9mx08DCV-HMKER8cVEfs4TVshNDzI" alt="Kling 3.1" style="opacity:.6;mix-blend-mode:screen;" />
+        <div class="img-placeholder">✦ KLING 3.0 PRO</div>
         <div class="vc-overlay"></div>
         <div class="vc-badge"><span class="badge badge-purple">4K 60FPS</span></div>
       </div>
       <div class="vc-body">
-        <h4 class="font-sora">Kling 3.1</h4>
-        <p>Nâng cấp 4K 60fps siêu mượt, chuyển động vật lý tự nhiên và nhất quán nhân vật.</p>
+        <h4 class="font-sora">Kling 3.0</h4>
+        <p>Chuyển động dây chuyền tự động hóa siêu mượt, xử lý tương tác vật lý khói bụi và ánh sáng kim loại tuyệt vời.</p>
         <div class="vc-footer">
-          <div><span class="price-label">Tham khảo</span><span class="price-value font-sora">2.x Triệu</span></div>
-          <button class="zalo-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Zalo</button>
+          <div><span class="price-label">Giá cấu hình</span><span class="price-value font-sora">Liên hệ</span></div>
+          <button class="zalo-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Zalo</button>
         </div>
       </div>
     </div>
-
-    <!-- Sora 2.0 -->
+ 
     <div class="glass-card rim-light video-card">
       <div class="vc-img" style="background:linear-gradient(135deg,#0a1a0a,#1a4a2e);">
-        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8SY85HSo0wSqa9mqKixC5_7qFzXi_LYl79TIVoU7mSbx0uYy6Y3TbH69rbKqifeUQj9NL0iWz3HQwlFg1cKsf7PBZAwBj9-0rYThmA0TdF3Oz-5qiFg0sB51Fq3Pz5zrFum9HpOOQHCMaHhB5trSmH7RqeWuXQgFp7_pnPt50b-bk2-VkX1t91wgQm7YNrBcLf_P5VHDEPEGyNh31mZFxbFM6bx5b4yzH1o-wRQbCzP270AKs6GYpqi4aTF3yXzDGLt11_DxXzu4v" alt="Sora 2.0" style="opacity:.6;mix-blend-mode:screen;" />
+        <div class="img-placeholder">✦ SORA 2 INDUSTRIAL</div>
         <div class="vc-overlay"></div>
         <div class="vc-badge"><span class="badge badge-green">VẬT LÝ THỰC</span></div>
-      </div>
-      <div class="vc-body">
-        <h4 class="font-sora">Sora 2.0</h4>
-        <p>Mô phỏng vật lý chân thực từ OpenAI, tạo video dài với nhất quán không gian hoàn hảo.</p>
-        <div class="vc-footer">
-          <div><span class="price-label">Tham khảo</span><span class="price-value font-sora">5.x Triệu</span></div>
-          <button class="zalo-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Zalo</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Storyboard 4 cảnh -->
-    <div class="glass-card rim-light video-card">
-      <div class="vc-img" style="background:linear-gradient(135deg,#1a1500,#3d3500);display:grid;grid-template-columns:1fr 1fr;gap:2px;padding:2px;">
-        <div style="background:rgba(255,215,0,0.08);border-radius:3px;"></div>
-        <div style="background:rgba(255,215,0,0.05);border-radius:3px;"></div>
-        <div style="background:rgba(255,215,0,0.05);border-radius:3px;"></div>
-        <div style="background:rgba(255,215,0,0.08);border-radius:3px;"></div>
-        <div class="vc-overlay" style="position:absolute;inset:0;"></div>
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:700;font-size:0.8rem;color:var(--prompt-gold);letter-spacing:.04em;">4 CẢNH × 8 GIÂY</div>
-      </div>
-      <div class="vc-body">
-        <h4 class="font-sora">Storyboard 4 cảnh, mỗi cảnh 8 giây</h4>
-        <p>Tự động dựng storyboard 4 phân cảnh liên mạch, mỗi cảnh dài 8 giây điện ảnh.</p>
-        <div class="vc-footer">
-          <div><span class="price-label">Giá tham khảo</span><span class="price-value font-sora">Liên hệ</span></div>
-          <button class="zalo-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Zalo</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- KIM BẤT HOÁN -->
-    <div class="glass-card rim-light video-card">
-      <div class="vc-img" style="background:linear-gradient(135deg,#1a0a00,#4a2000);">
-        <div class="img-placeholder" style="color:var(--prompt-gold);font-size:1rem;">👑 KIM BẤT HOÁN</div>
-        <div class="vc-overlay"></div>
-        <div class="vc-badge"><span class="badge badge-gold">TỔNG HỢP AI</span></div>
-      </div>
-      <div class="vc-body">
-        <h4 class="font-sora">KIM BẤT HOÁN</h4>
-        <p>Tổng hợp các AI render video hàng đầu — bộ công cụ không thể thay thế cho chuyên gia.</p>
-        <div class="vc-footer">
-          <div><span class="price-label">Giá tham khảo</span><span class="price-value font-sora">Liên hệ</span></div>
-          <button class="zalo-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Zalo</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- VIÊN NGỌC VÔ GIÁ -->
-    <div class="glass-card rim-light video-card">
-      <div class="vc-img" style="background:linear-gradient(135deg,#001a1a,#004040);">
-        <div class="img-placeholder" style="color:var(--success-green);font-size:1rem;">💎 VIÊN NGỌC VÔ GIÁ</div>
-        <div class="vc-overlay"></div>
-        <div class="vc-badge"><span class="badge badge-green">TỔNG HỢP AI</span></div>
-      </div>
-      <div class="vc-body">
-        <h4 class="font-sora">VIÊN NGỌC VÔ GIÁ</h4>
-        <p>Tổng hợp các AI render video cao cấp, lựa chọn tối ưu cho từng loại nội dung.</p>
-        <div class="vc-footer">
-          <div><span class="price-label">Giá tham khảo</span><span class="price-value font-sora">Liên hệ</span></div>
-          <button class="zalo-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Zalo</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- RunWay Gen Kim Cương Đỏ -->
-    <div class="glass-card rim-light video-card">
-      <div class="vc-img" style="background:linear-gradient(135deg,#1a0010,#4a0030);">
-        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWMICvRjbC8Uxd1HMJ4i3wGLTT922aua9BiweBglmgExTcCXcHe-vb2wTYacAqDlHoRF47JkmKs4SlLkgsK-H16nYz_F0l3a71ORHbElUugp7ADDzI3WfLcvGzldxwOx23AHs0u-unaCaoT4zWI-v6wnqGl_U3-NJxWiv3eXm4ISgjKHPtXH7FQ5n2_ZwusZqJk2NsR2O5-Cetdz3Vy88pjcrReVwpQjuVPWIxF40Ydy_3krHK34pBqKLQgF33AKopRsyb139jO-2R" alt="RunWay Gen" style="opacity:.65;mix-blend-mode:screen;" />
-        <div class="vc-overlay"></div>
-        <div class="vc-badge"><span class="badge badge-purple">ULTRA HD</span></div>
-      </div>
-      <div class="vc-body">
-        <h4 class="font-sora">RunWay Gen Kim Cương Đỏ</h4>
-        <p>Tổng hợp AI Render video — xử lý chi tiết điện ảnh và chuyển động vật lý hoàn hảo.</p>
-        <div class="vc-footer">
-          <div><span class="price-label">Giá tham khảo</span><span class="price-value font-sora">Liên hệ</span></div>
-          <button class="zalo-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Zalo</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Tích hợp các AI Mới -->
-    <div class="glass-card rim-light video-card">
-      <div class="vc-img" style="background:linear-gradient(135deg,#050520,#10103a);">
-        <div class="img-placeholder" style="color:var(--primary);">⚡ Tích hợp AI Mới</div>
-        <div class="vc-overlay"></div>
-        <div class="vc-badge"><span class="badge badge-blue">LIÊN TỤC CẬP NHẬT</span></div>
-      </div>
-      <div class="vc-body">
-        <h4 class="font-sora">Tích hợp các AI Mới</h4>
-        <p>Luôn cập nhật những model AI video mới nhất, đảm bảo bạn không bỏ lỡ công nghệ tiên tiến.</p>
-        <div class="vc-footer">
-          <div><span class="price-label">Giá tham khảo</span><span class="price-value font-sora">Liên hệ</span></div>
-          <button class="zalo-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Zalo</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Seedance 2.0 -->
-    <div class="glass-card rim-light video-card">
-      <div class="vc-img" style="background:linear-gradient(135deg,#0a0a1a,#1e1e4a);">
-        <div class="img-placeholder" style="color:var(--primary);">🌟 Seedance 2.0</div>
-        <div class="vc-overlay"></div>
-        <div class="vc-badge"><span class="badge badge-blue">TỐT NHẤT</span></div>
-      </div>
-      <div class="vc-body">
-        <h4 class="font-sora">Seedance 2.0 tốt nhất</h4>
-        <p>Phiên bản Seedance tối ưu nhất — chất lượng xuất sắc, ổn định, phù hợp mọi nội dung.</p>
-        <div class="vc-footer">
-          <div><span class="price-label">Giá tham khảo</span><span class="price-value font-sora">Liên hệ</span></div>
-          <button class="zalo-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Zalo</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Siêu AI -->
-    <div class="glass-card rim-light video-card" style="border-color:rgba(225,0,255,0.3);box-shadow:0 0 24px rgba(225,0,255,0.12);">
-      <div class="vc-img" style="background:linear-gradient(135deg,#1a0030,#300060,#001a40);">
-        <div class="img-placeholder" style="color:#fff;font-size:1.05rem;text-shadow:0 0 20px var(--video-accent);">🚀 SIÊU AI</div>
-        <div class="vc-overlay"></div>
-        <div class="vc-badge"><span class="badge badge-purple">CHẤT LƯỢNG TỐT NHẤT</span></div>
-      </div>
-      <div class="vc-body">
-        <h4 class="font-sora" style="color:var(--video-accent);">Siêu AI</h4>
-        <p>Tổng hợp: Omni + Seedance + Kling + Sora… — chất lượng video tốt nhất hiện có.</p>
-        <div class="vc-footer">
-          <div><span class="price-label">Giá tham khảo</span><span class="price-value font-sora">Liên hệ</span></div>
-          <button class="zalo-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Zalo</button>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════
-     III. ACTION PHOTOSHOP
-════════════════════════════════════════════ -->
-<div class="sec" id="section-action">
-  <div class="section-header">
-    <span class="section-bar" style="background:var(--success-green);"></span>
-    <h3 class="font-sora">CÁC ACTION PHOTOSHOP</h3>
-  </div>
-
-  <div class="action-grid">
-
-    <div class="glass-card action-card">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
-      <h5>Sắc nét ảnh + Mịn da</h5>
-      <p>Làm sắc nét chi tiết, mịn da tự nhiên</p>
-    </div>
-
-    <div class="glass-card action-card">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M3 12h1m16 0h1M12 3v1m0 16v1m-6.36-2.64.71-.71m11.31 0 .71.71M5.64 5.64l.71.71m11.31 0 .71-.71"/></svg>
-      <h5>Chỉnh màu 1 click</h5>
-      <p>Màu điện ảnh chuyên nghiệp tức thì</p>
-    </div>
-
-    <div class="glass-card action-card">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 8v4l3 3"/></svg>
-      <h5>Sửa các loại da bị lỗi</h5>
-      <p>Xử lý mọi khuyết điểm da phức tạp</p>
-    </div>
-
-    <div class="glass-card action-card">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/><path d="M8 6V4m8 2V4M8 18v2m8-2v2"/></svg>
-      <h5>Xóa bụi bẩn ảnh cũ</h5>
-      <p>Phục hồi ảnh cũ loại bỏ bụi hạt</p>
-    </div>
-
-    <div class="glass-card action-card">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-      <h5>Xóa lang ben</h5>
-      <p>Xử lý lang ben, nám da hiệu quả</p>
-    </div>
-
-    <div class="glass-card action-card">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 17 12 21 16 17"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.88 18.09A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.29"/></svg>
-      <h5>Nâng cấp ảnh lên 4K</h5>
-      <p>Upscale AI siêu nét lên 4K chuẩn</p>
-    </div>
-
-  </div>
-</div>
-
-<!-- PAYMENT SECTION -->
-<div class="sec" id="section-support" style="margin-bottom:6rem;">
-  <div class="glass-card rim-light payment-wrap">
-    <div class="payment-header">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-      <h3 class="font-sora">Hướng dẫn thanh toán</h3>
-    </div>
-    <div class="payment-grid">
-      <div class="payment-steps">
-        <div class="payment-step">
-          <div class="step-num">1</div>
-          <p class="step-text">Liên hệ qua Zalo để trao đổi nhu cầu và nhận báo giá chính xác cho gói dịch vụ.</p>
-        </div>
-        <div class="payment-step">
-          <div class="step-num">2</div>
-          <p class="step-text">Sau khi thống nhất chi phí, quét mã QR thanh toán để hoàn tất giao dịch.</p>
-        </div>
-        <div class="payment-step">
-          <div class="step-num">3</div>
-          <p class="step-text">Chụp ảnh hóa đơn và gửi vào Zalo để kích hoạt tài khoản/công cụ ngay lập tức.</p>
-        </div>
-      </div>
-      <div class="qr-wrap">
-        <div class="qr-inner">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWyL_dnqKmKmy4de1qKKgbZdk-ubR1xkJmiMT4QkHDVULRbIyVXwKrvTBhGt9rkT9F7IFtxnHuheLnEX2W7PgAmM3wst1K_F2NmLi5UBHnonURDxa2mDK_qPjGGbhVz60TWSVtf3x_4qchKWjImZXGqZGJ-R_GYD_BBFBThWMZm_16FNGwayjiWEuunU0Dh-AbuSPkXJLplbu0veBf20DPOI3uUv449BkgqsXzFMh8SY4fVFBS0lVZgepeTFFJkT7NjOjz1g0gbZ13" alt="Payment QR Code" />
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-</main>
-
-<!-- FOOTER -->
-<footer>
-  <div>
-    <h4 class="font-sora">AI ARTIFACTS</h4>
-    <p style="font-weight:600;font-size:.875rem;color:var(--on-surface);margin-top:.75rem;">Chủ cửa hàng: Công Hải</p>
-    <p style="font-size:.75rem;color:var(--on-surface-variant);margin-top:.25rem;">Địa chỉ: Thành phố Lào Cai</p>
-    <p style="color:var(--primary);font-weight:600;font-size:.875rem;margin-top:.5rem;">📞 0969258659</p>
-  </div>
-  <p class="copy">© 2024 AI Artifacts. Curated by Công Hải - Lao Cai</p>
-  <div class="links">
-    <a href="#">Privacy Policy</a>
-    <a href="#">Terms of Service</a>
-    <a href="#">Consult Zalo</a>
-  </div>
-</footer>
-
-<!-- BOTTOM NAV -->
-<nav class="bottom-nav">
-  <button class="bottom-btn active">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-    <span>Market</span>
-  </button>
-  <button class="bottom-btn">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
-    <span>Prompts</span>
-  </button>
-  <button class="bottom-btn">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1z"/></svg>
-    <span>Video</span>
-  </button>
-  <button class="bottom-btn">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-    <span>Support</span>
-  </button>
-</nav>
-
-<!-- FAB -->
-<div class="fab">
-  <div class="fab-tooltip">Chat trực tiếp</div>
-  <button class="fab-btn">
-    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEW8nuSF79I8lC7xHUwhJ7RQRPgWCUY8OZQY5FBAH7VxpWvduu7MS333wQ9o4hoPSM6Q6qOe7ONbAMxELYyOarWQ4LKrv1NCMg2crKZ-BQOAUIXu1pg1KZRRWuhTbR8qbbZXIlXurv9f2bBCpM9IFzBX0u-11tChhRxRauALvt6fuLfD2NiyfEE_JTV5_-dMJQDRot2wZ1cjipth5oadALKVh6GRVqFIRmEvBqlx5PEX3hd2nvWX8lJxT7pAzE215oHCTdq-tJCeIV" alt="Zalo" />
-  </button>
-</div>
-
-</body>
-</html>
